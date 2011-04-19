@@ -1,0 +1,328 @@
+<html>
+	<head>
+		<style>
+			body {
+				font-family:helvetica;
+
+				background: -moz-linear-gradient(top, #eef, #fee);
+    				/* Chrome, Safari:*/
+   				background: -webkit-gradient(linear,
+                		left top, left bottom, from(#eef), to(#fee));
+    				/* MSIE */
+    				height:1%;/*IE Fix to give it hasLayout*/
+    				filter: progid:DXImageTransform.Microsoft.Gradient(
+                		StartColorStr='#eef', EndColorStr='#fee', GradientType=0);
+			}
+			a, a:link {text-decoration:none;}
+			a.box {padding:2px;}
+			h1,h2,h3,h4,h5 {padding:0 0 0 0;margin:0;}
+			.column {float:left;display:none;}
+			.column, .box {
+				padding:10px;border:1px solid #fff;border-radius:2em;background:#fff;width:auto;	
+
+				background: -moz-linear-gradient(top, #eef, #fee);
+    				/* Chrome, Safari:*/
+   				background: -webkit-gradient(linear,
+                		left top, left bottom, from(#eef), to(#fee));
+    				/* MSIE */
+    				height:1%;/*IE Fix to give it hasLayout*/
+    				filter: progid:DXImageTransform.Microsoft.Gradient(
+                		StartColorStr='#eef', EndColorStr='#fee', GradientType=0);	
+			}
+			ul {list-style-type:none;}
+			.clear {clear:both;}
+			.small {font-size: x-small;}
+			.nowrap {white-space:nowrap;}
+			table td {vertical-align:top;margin-top:0;}
+			#page {width:100%;}
+			#index {max-width:300px;white-space:nowrap;}
+			#main {width:100%;}
+			button.more {font-family:monospace;font-size:x-small;}
+		</style>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script>
+		<script type="text/javascript">$(function() {$( "ul.columns > li, .column, .box" ).draggable();});</script>
+		<script type="text/javascript">
+			var url = location.href;
+			$(function() {
+				$( "ul.column li ul" ).each(function(){
+					var childUL = $(this).hide();
+					childUL.before($('<button class="more">+</button>').click(function(){
+						childUL.toggle();
+						if('+'===$(this).html()){$(this).html('-');}else{$(this).html('+');}
+					}));
+				});
+
+				$('body').append($('<span id="sorted"></span>'));
+				$('a[toggle]').each(function(){
+					$(this).click(function(){$('#'+$(this).attr('toggle')).toggle('fast');});
+					$('#sorted').append($('#'+$(this).attr('toggle')).hide());
+				});
+				$('#main').append($('#sorted'));
+				try {$('#'+location.href.split('#')[1]).show();}catch(err){}
+			});
+			
+			function getURLParameter(name) {
+			    return unescape(
+				(RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
+			    );
+			}
+			function translationURL(languageCode) {
+				url = window.parent.location.href;
+				if (url.indexOf('translate') > -1) {
+					url = getURLParameter('u');
+				}
+				return 'http://translate.google.com/translate?u='+escape(url) +'&tl='+languageCode;
+			}
+		</script>
+	</head>
+	<body>
+
+<table id="page"><tr>
+
+<td id="index">
+
+
+	<div class="box" style="text-align:center;">
+	  <img src="haitianwork.png" title="Haitian Maroon with hammer in place of knife" style="width:150px"/>
+	  <h2 style="padding:0;margin:0">Rebuild Haiti</h2>
+	</div>
+	<div class="box">
+          <ul>
+	    <li>
+	      <h2>Translate</h2>
+	      <a href="#" onclick="window.parent.location.href=translationURL('en')" class="small box">English</a>
+	      <a href="#" onclick="window.parent.location.href=translationURL('fr')" class="small box">Francais</a>
+	      <a href="#" onclick="window.parent.location.href=translationURL('ht')" class="small box">Kreyol</a>
+	    </li>
+	    <li>&nbsp;</li>
+            <li>
+	      <h2>Index</h2>
+              <a href="#" onclick="$('.column').show('fast')" class="small box">Show all</a>
+	      <a href="#" onclick="$('.column').hide('fast')" class="small box">Hide all</a>
+            </li>
+	    <li>&nbsp;</li>
+	    <li><h3>Background</h3></li>
+            <li><a href="#culture" toggle="culture">Culture</a></li>
+            <li><a href="#history" toggle="history">History</a></li>
+            <li><a href="#geography" toggle="geography">Geography</a></li>
+            <li><a href="#government" toggle="government">Government</a></li>
+            <li><a href="#economy" toggle="economy">Economy</a></li>
+            <li><a href="#society" toggle="society">Society</a></li>
+	    <li>&nbsp;</li>
+	    <li><h3>Links</h3></li>
+            <li><a href="#govlinks" toggle="govlinks">Government</a></li>
+            <li><a href="#tourism" toggle="tourism">Tourism</a></li>
+	    <li><a href="#miscellaneous" toggle="miscellaneous">Miscellaneous</a></li>
+	    <li>&nbsp;</li>
+	    <li><h3>Multimedia</h3></li>
+	    <li><a href="#book" toggle="book">Books</a></li>
+	    <li><a href="#music" toggle="music">Music</a></li>
+            <li><a href="#video" toggle="video">Video</a></li>
+	    <li><a href="#documentary" toggle="documentary">Documentaries</a></li>
+          </ul>
+        </div>
+
+
+</td><!-- Index -->
+
+<td id="main">
+
+
+<ul class="column" id="tourism">
+  <li><h2><a href="http://www.haiticherie.ht/">Haiti Cherie</a></h2></li>
+  <li><a href="http://www.haiticherie.ht/PDF/Brochure_Magic_Haiti.pdf">Brochure</a></li>
+  <li>&nbsp;</li>
+  <li><a href="http://www.haiticherie.ht/EN/destinations/sites_historiques.php">Historical sites</a></li>
+  <li><a href="http://www.haiticherie.ht/EN/destinations/mer_et_plages.php">Oceans & Beaches</a></li>
+  <li><a href="http://www.haiticherie.ht/EN/destinations/villes_principales.php">Major cities</a></li>
+  <li><a href="http://www.haiticherie.ht/EN/destinations/montagnes.php">Mountains</a></li>
+  <li>&nbsp;</li>
+  <li><a href="http://www.haiticherie.ht/EN/activites/festivals.php">Carnaval & Rara</a></li>
+  <li><a href="http://www.haiticherie.ht/EN/activites/festivals.php">Festivals & Patron Saints days</a></li>
+  <li><a href="http://www.haiticherie.ht/EN/activites/congres.php">Congress & business meetings</a></li>
+  <li><a href="http://www.haiticherie.ht/EN/activites/events.php">Events</a></li>
+  <li><a href="http://www.haiticherie.ht/EN/activites/sante_et_spa.php">Spa & health</a></li>
+  <li>&nbsp;</li>
+  <li><a href="http://www.haiticherie.ht/EN/culture/galeries_dart.php">Museum & art galleries</a></li>
+  <li><a href="http://www.haiticherie.ht/EN/culture/gastronomie.php">Gastronomy</a></li>
+  <li><a href="http://www.haiticherie.ht/EN/culture/spritualites_et_religion.php">Religion & spirituality</a></li>
+  <li><a href="http://www.haiticherie.ht/EN/culture/musiques.php">Music</a></li>
+  <li>&nbsp;</li>
+  <li><a href="http://www.haiticherie.ht/EN/infos/hebergement.php">Accomodations</a></li>
+  <li><a href="http://www.haiticherie.ht/EN/infos/restauration.php">Food</a></li>
+  <li><a href="http://www.haiticherie.ht/EN/infos/transports.php">Transportation</a></li>
+  <li><a href="http://www.haiticherie.ht/EN/infos/urgences.php">Emergency Numbers</a></li>
+  <li><a href="http://www.haiticherie.ht/EN/presentation/annuaire_membres.php">Businesses</a></li>
+</ul><!-- Tourism -->
+
+<ul class="column" id="govlinks">
+  <li><h2>Government links</h2></li>
+  <li><a href="http://translate.google.com/translate?hl=en&sl=fr&tl=en&u=http://www.primature.gouv.ht/">Prime Minister</a></li>
+  <li><a href="http://translate.google.com/translate?hl=en&sl=fr&tl=en&u=http://www.chambredesdeputes.parlementhaitien.ht/">Chamber of Deputies</a></li>
+  <li><a href="http://translate.google.com/translate?hl=en&sl=fr&tl=en&u=http://www.lesenat.parlementhaitien.ht/">Senate</a></li>
+  <li><a href="http://translate.google.com/translate?hl=en&sl=fr&tl=en&u=http://www.eduhaiti.gou/">National education & vocational training</a></li>
+  <li><a href="http://translate.google.com/translate?hl=en&sl=fr&tl=en&u=http://www.agriculture.gouv.ht/">Agriculture & natural resources</a></li>
+  <li><a href="http://translate.google.com/translate?hl=en&sl=fr&tl=en&u=http://www.mtptc.gouv.ht/">Public works, transport & communications</a></li>
+  <li><a href="http://translate.google.com/translate?hl=en&sl=fr&tl=en&u=http://www.mae.gouv.ht/">Foreign affairs & cults</a></li>
+  <li><a href="http://translate.google.com/translate?hl=en&sl=fr&tl=en&u=http://www.mefhaiti.gouv.ht/">Economy & finance</a></li>
+  <li><a href="http://translate.google.com/translate?hl=en&sl=fr&tl=en&u=http://www.mhave.gouv.ht/">Haitians living abroad</a></li>
+  <li><a href="http://translate.google.com/translate?hl=en&sl=fr&tl=en&u=http://www.seiph.gouv.ht/">Integration of people with disabilities</a></li>
+  <li><a href="http://translate.google.com/translate?hl=en&sl=fr&tl=en&u=http://www.cnmp.gouv.ht/">Public markets</a></li>
+  <li><a href="http://translate.google.com/translate?hl=en&sl=fr&tl=en&u=http://www.oni.gouv.ht/">National identification office</a></li>
+  <li><a href="http://translate.google.com/translate?hl=en&sl=fr&tl=en&u=http://www.conatel.gouv.ht/">Telecommunications</a></li>
+  <li><a href="http://translate.google.com/translate?hl=en&sl=fr&tl=en&u=http://www.mci.gouv.ht/">Commerce and Industry</a></li>
+  <li><a href="http://translate.google.com/translate?hl=en&sl=fr&tl=en&u=http://www.apn.gouv.ht/">Port authority</a></li>
+  <li><a href="http://translate.google.com/translate?hl=en&sl=fr&tl=en&u=http://www.ihsi.ht/">Statistics & informatics</a></li>
+  <li><a href="http://translate.google.com/translate?hl=en&sl=fr&tl=en&u=http://www.douane.gouv.ht/">Customs</a></li>
+  <li><a href="http://translate.google.com/translate?hl=en&sl=fr&tl=en&u=http://www.ueh.edu.ht/">State University of Haiti</a></li>
+  <li><a href="http://translate.google.com/translate?hl=en&sl=fr&tl=en&u=http://www.anhhaiti.org/">National archives</a></li>
+  <li><a href="http://translate.google.com/translate?hl=en&sl=fr&tl=en&u=http://www.bnconline.com/">National bank of credit</a></li>
+  <li><a href="http://translate.google.com/translate?hl=en&sl=fr&tl=en&u=http://www.bme.gouv.ht/">Mines & energy</a></li>
+  <li><a href="http://translate.google.com/translate?hl=en&sl=fr&tl=en&u=http://www.tnh.ht/">National television</a></li>
+  <li><a href="http://translate.google.com/translate?hl=en&sl=fr&tl=en&u=http://www.cnc.coop/">Coucil of cooperatives</a></li>
+  <li><a href="http://translate.google.com/translate?hl=en&sl=fr&tl=en&u=http://www.incah-haiti.gouv.ht/">Institute of coffee</a></li>
+  <li><a href="http://translate.google.com/translate?hl=en&sl=fr&tl=en&u=http://www.bureaudegestion.gouv.ht/">Development aid program management</a></li>
+  <li><a href="http://translate.google.com/translate?hl=en&sl=fr&tl=en&u=www.mpce.gouv.ht/liens.htm">Planning & foreign aid</a></li>
+  <li><a href="http://translate.google.com/translate?hl=en&sl=fr&tl=en&u=http://www.lnbtp.gouv.ht/">Building & public works</a></li>
+</ul><!-- Government links -->
+
+<ul class="column" id="government">
+  <li><h2><a href="http://en.wikipedia.org/wiki/Politics_of_Haiti">Government</a></h2></li>
+  <li><a href="http://en.wikipedia.org/wiki/Constitution_of_Haiti">Constitution</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/President_of_Haiti">President</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/List_of_Prime_Ministers_of_Haiti">List of Prime Ministers</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Parliament_of_Haiti">Parliament</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/List_of_current_members_of_the_National_Assembly_of_Haiti">National Assembly</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Senate_of_Haiti">Senate</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Chamber_of_Deputies_of_Haiti">Chamber of Deputies</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Supreme_Court_of_Haiti">Supreme Court</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/List_of_political_parties_in_Haiti">List of political parties</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Foreign_relations_of_Haiti">Foreign relations</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Elections_in_Haiti">Elections</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Departments_of_Haiti">Departments</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Arrondissements_of_Haiti">Arrondissements</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/List_of_communes_of_Haiti">Communes</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Military_of_Haiti">Military</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Law_enforcement_in_Haiti">Law enforcement</a></li>
+</ul><!-- Government -->
+
+<ul class="column" id="culture">
+  <li><h2><a href="http://en.wikipedia.org/wiki/Culture_of_Haiti">Culture</a></h2></li>
+  <li>
+    <a href="http://en.wikipedia.org/wiki/Flag_of_Haiti">Flag</a>
+  | <a href="http://en.wikipedia.org/wiki/Coat_of_arms_of_Haiti">Coats of arms</a> 
+  </li>
+  <li><a href="http://en.wikipedia.org/wiki/Haitian_Creole_language">Haitian Creole</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Public_holidays_in_Haiti">Holidays</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Haitian_art">Art</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Music_of_Haiti">Music</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Cinema_of_Haiti">Cinema</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Haitian_cuisine">Cuisine</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Haitian_literature">Literature</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Religion_in_Haiti">Religion</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Haitian_mythology">Mythology</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Category:Sport_in_Haiti">Sports</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/List_of_people_on_stamps_of_Haiti">List of people on stamps</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/National_Museum_of_Haiti">National Museum</a></li>
+</ul><!-- Culture -->
+
+<ul class="column" id="history">
+  <li><h2><a href="http://en.wikipedia.org/wiki/History_of_Haiti">History</a></h2></li>
+  <li>-Chronology-</li>
+  <li><a href="http://en.wikipedia.org/wiki/Saint-Domingue">Saint-Domingue</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Haitian_Revolution">Haitian Revolution</a></li>
+  <li><a href="http://en.wikipedia.org/w/index.php?title=History_of_Haiti_(1804-1843)&action=edit&redlink=1">Imperial era (1804-1843)</a></li>
+  <li><a href="http://en.wikipedia.org/w/index.php?title=History_of_Haiti_(1843-1915)&action=edit&redlink=1">Republican era (1843-1915)</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/History_of_Haiti_(1915%E2%80%931986)">US occupation and Duvalier regime (1915-1986)</a></li>
+  <li><a href="http://en.wikipedia.org/w/index.php?title=History_of_Haiti_(1986-present)&action=edit&redlink=1">Aristide era and 2010 earthquake (1986-present)</a></li>
+  <li>&nbsp;</li>
+  <li>-Topics-</li>
+  <li><a href="http://en.wikipedia.org/wiki/Timeline_of_Haitian_history">Timeline of Haitian history</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Military_history_of_Haiti">Military history</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/United_States_occupation_of_Haiti">United States occupation of Haiti</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/2004_Haitian_rebellion">2004 Haitian rebellion</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/2010_Haiti_earthquake">2010 Earthquake</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/2010_Haiti_cholera_outbreak">Cholera outbreak</a></li>
+</ul><!-- History -->
+
+<ul class="column" id="geography">
+  <li><h2><a href="http://en.wikipedia.org/wiki/Geography_of_Haiti">Geography</a></h2></li>
+  <li><a href="http://en.wikipedia.org/wiki/Subdivisions_of_Haiti">Administrative divisions</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/List_of_cities_in_Haiti">Cities</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Deforestation_in_Haiti">Deforestation</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Environment_of_Haiti">Environment</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/List_of_islands_of_Haiti">Islands</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/List_of_national_parks_of_Haiti">National parks</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/List_of_rivers_of_Haiti">Rivers</a></li>
+</ul><!-- Geography -->
+
+<ul class="column" id="economy">
+  <li><h2><a href="http://en.wikipedia.org/wiki/Economy_of_Haiti">Economy</a></h2></li>
+  <li>
+    <a href="http://en.wikipedia.org/wiki/Haitian_gourde">Currency</a>
+  | <a href="http://www.brh.net/bils.htm">Banknotes</a>
+  </li>
+  <li><a href="http://en.wikipedia.org/wiki/Agriculture_in_Haiti">Agriculture</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/List_of_airports_in_Haiti">Airports</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Bank_of_the_Republic_of_Haiti">Central bank</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Communications_in_Haiti">Communications</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Transport_in_Haiti">Transport</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Tourism_in_Haiti">Tourism</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Media_of_Haiti">Media</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Water_supply_and_sanitation_in_Haiti">Water supply & sanitation</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Foreign_aid_to_Haiti">Foreign aid</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/External_debt_of_Haiti">External Debt</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/List_of_companies_of_Haiti">List of companies</a></li>
+</ul><!-- Economy -->
+  
+<ul class="column" id="society">
+  <li><h2>Society</h2></li>
+  <li><a href="http://en.wikipedia.org/wiki/Crime_in_Haiti">Crime</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Demographics_of_Haiti">Demographics</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Haitian_diaspora">Diaspora</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Education_in_Haiti">Education</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Health_in_Haiti">Health</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Human_rights_in_Haiti">Human rights</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/List_of_Haitians">Notable People</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Religion_in_Haiti">Religion</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Social_class_in_Haiti">Social class</a></li>
+</ul><!-- Society -->
+  
+<ul class="column" id="miscellaneous">
+  <li><h2>Miscellaneous links</h2></li>
+  <li><a href="http://www.doingbusiness.org/data/exploreeconomies/haiti">Doing business</a></li>
+  <li>test
+    <ul>
+      <li>test2</li>
+    </ul>
+  </li>
+</ul><!-- Miscellaneous -->
+  
+<ul class="column" id="music">
+  <li><h2>Music</h2></li>
+  <li><a href="http://listen.grooveshark.com/playlist/Haiti/51909927?src=5">Playlist 1</a></li>
+</ul><!-- Music -->
+
+<ul class="column" id="book">
+  <li><h2>Books</h2></li>
+  <li><a href="http://www.amazon.com/Black-Jacobins-Toussaint-LOuverture-Revolution/dp/0679724672">The Black Jacobins</a></li>
+</ul><!-- Documentary -->
+
+<ul class="column" id="video">
+  <li><h2>Video</h2></li>
+  <li><a href="http://vimeo.com/user6654006/videos">Beautiful Images of Haiti</a></li>
+</ul><!-- Video -->
+
+<ul class="column" id="documentary">
+  <li><h2>Documentaries</h2></li>
+  <li><a href="http://www.pbs.org/wnet/black-in-latin-america/featured/haiti-the-dominican-republic-an-island-divided-watch-full-episode/165/">Haiti & the Dominican Republic</a></li>
+</ul><!-- Documentary -->
+
+
+</td><!-- Main -->
+</tr></table>
+
+
+	</body>
+</html>
