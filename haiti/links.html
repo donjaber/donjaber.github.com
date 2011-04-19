@@ -18,7 +18,11 @@
 			h1,h2,h3,h4,h5 {padding:0 0 0 0;margin:0;}
 			.column {float:left;display:none;}
 			.column, .box {
-				padding:10px;border:1px solid #fff;border-radius:2em;background:#fff;width:auto;	
+				padding:10px;border:1px solid #fff;background:#fff;width:auto;	
+
+				-moz-border-radius: 2em;
+ 				-webkit-border-radius: 2em;
+ 				border-radius: 2em 2em 2em 2em; /* for some reason you have to declare all corners in ie*/
 
 				background: -moz-linear-gradient(top, #eeeeff, #ffeeee);
     				/* Chrome, Safari:*/
