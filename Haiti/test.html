@@ -45,7 +45,7 @@
 			    );
 			}
 			function translationURL(languageCode) {
-				url = location.href;
+				url = window.parent.location.href;
 				if (url.indexOf('translate') > -1) {
 					url = getURLParameter('u');
 				}
