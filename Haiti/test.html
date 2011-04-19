@@ -38,6 +38,19 @@
 				});
 				$('#main').append($('#sorted').html());
 			});
+			
+			function getURLParameter(name) {
+			    return unescape(
+				(RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
+			    );
+			}
+			function translationURL(languageCode) {
+				url = location.href;
+				if (url.indexOf('translate') > -1) {
+					url = getURLParameter('u');
+				}
+				return 'http://translate.google.com/translate?u='+escape(url) +'&tl='+languageCode;
+			}
 		</script>
 	</head>
 	<body>
@@ -52,9 +65,9 @@
           <ul>
 	    <li>
 	      <h2>Translate</h2>
-	      <a href="#" onclick="window.parent.location.href='http://translate.google.com/translate?tl=en&u='+escape(url)" class="small box">English</a>
-	      <a href="#" onclick="window.parent.location.href='http://translate.google.com/translate?tl=fr&u='+escape(url)" class="small box">Francais</a>
-	      <a href="#" onclick="window.parent.location.href='http://translate.google.com/translate?tl=ht&u='+escape(url)" class="small box">Kreyol</a>
+	      <a href="#" onclick="window.parent.location.href=translationURL('en')" class="small box">English</a>
+	      <a href="#" onclick="window.parent.location.href=translationURL('fr')" class="small box">Francais</a>
+	      <a href="#" onclick="window.parent.location.href=translationURL('ht')" class="small box">Kreyol</a>
 	    </li>
             <li>
 	      <h2>Index</h2>
