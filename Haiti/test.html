@@ -21,6 +21,7 @@
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script>
 		<script type="text/javascript">$(function() {$( "ul.columns > li, .column, .box" ).draggable();});</script>
 		<script type="text/javascript">
+			var url = location.href;
 			$(function() {
 				$( "ul.column li ul" ).each(function(){
 					var childUL = $(this).hide();
@@ -51,9 +52,9 @@
           <ul>
 	    <li>
 	      <h2>Translate</h2>
-	      <a href="#" onclick="location.href='http://translate.google.com/translate?hl=en&sl=en&tl=en&u='+escape(location.href)" class="small box">English</a>
-	      <a href="#" onclick="location.href='http://translate.google.com/translate?hl=fr&sl=en&tl=en&u='+escape(location.href)" class="small box">Francais</a>
-	      <a href="#" onclick="location.href='http://translate.google.com/translate?hl=ht&sl=en&tl=en&u='+escape(location.href)" class="small box">Kreyol</a>
+	      <a href="#" onclick="location.href='http://translate.google.com/translate?sl=en&u='+escape(url)" class="small box">English</a>
+	      <a href="#" onclick="location.href='http://translate.google.com/translate?sl=fr&u='+escape(url)" class="small box">Francais</a>
+	      <a href="#" onclick="location.href='http://translate.google.com/translate?sl=ht&u='+escape(url)" class="small box">Kreyol</a>
 	    </li>
             <li>
 	      <h2>Index</h2>
