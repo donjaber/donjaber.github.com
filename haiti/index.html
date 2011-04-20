@@ -1,24 +1,33 @@
 <html>
 	<head>
+		<title>Haiti - Portal</title>
 		<style>
 			body {
-				font-family:helvetica; color: #666;
+				font-family:helvetica;color: #666;
 
 				background: -moz-linear-gradient(top, #eeeeff, #ffeeee);
     				/* Chrome, Safari:*/
    				background: -webkit-gradient(linear,
-                		left top, left bottom, from(#eeeeff), to(#ffeeee));
+                		left top, left bottom, from(#0000ff), to(#ff0000));
     				/* MSIE */
     				height:1%;/*IE Fix to give it hasLayout*/
     				filter: progid:DXImageTransform.Microsoft.Gradient(
                 		StartColorStr='#eeeeff', EndColorStr='#ffeeee', GradientType=0);
 			}
+			#page {
+				background-image: url(coats-of-arms.png);
+				background-repeat: no-repeat;
+				background-position: center center;
+				background-attachment: fixed;
+			}
 			a, a:link {text-decoration:none;}
 			a.box {padding:2px;}
 			h1,h2,h3,h4,h5 {padding:0 0 0 0;margin:0;}
+			h2 {font-size:1.1em;}
+			h3 {font-size:1em;}
 			.column {float:left;display:none;}
 			.column, .box {
-				padding:10px;border:1px solid #fff;background:#fff;width:auto;	
+				padding:10px;border:1px solid #fff;background:#fff;width:auto;font-size:0.8em;margin:0;	
 
 				-moz-border-radius: 2em;
  				-webkit-border-radius: 2em;
@@ -27,18 +36,25 @@
 				background: -moz-linear-gradient(top, #eeeeff, #ffeeee);
     				/* Chrome, Safari:*/
    				background: -webkit-gradient(linear,
-                		left top, left bottom, from(#eeeeff), to(#ffeeee));
+                		left top, left bottom, from(#ccccff), to(#ffcccc));
     				/* MSIE */
     				height:1%;/*IE Fix to give it hasLayout*/
     				filter: progid:DXImageTransform.Microsoft.Gradient(
                 		StartColorStr='#eeeeff', EndColorStr='#ffeeee', GradientType=0);	
 			}
-			ul {list-style-type:none;}
+			ul {list-style-type:none;padding:0 0 0 1em;}
+			.center {text-align:center;}
 			.clear {clear:both;}
 			.small {font-size: x-small;}
+			.comment {font-size: x-small;}
 			.nowrap {white-space:nowrap;}
+			.fade {color:#aaa;}
+			.inline {display:inline;}
+			.floatleft {float:left;}
+			
 			table td {vertical-align:top;margin-top:0;}
 			#page {width:100%;}
+			#utilities {white-space:nowrap;}
 			#index {max-width:300px;white-space:nowrap;}
 			#main {width:100%;}
 			button.more {font-family:monospace;font-size:x-small;}
@@ -48,6 +64,7 @@
 		<script type="text/javascript">$(function() {$( "ul.columns > li, .column, .box" ).draggable();});</script>
 		<script type="text/javascript">
 			var url = location.href;
+			
 			$(function() {
 				$( "ul.column li ul" ).each(function(){
 					var childUL = $(this).hide();
@@ -64,12 +81,17 @@
 				});
 				$('#main').append($('#sorted'));
 				try {$('#'+location.href.split('#')[1]).show();}catch(err){}
+				
+				var searchText = 'Search and press Enter';
+				$('form#search input#query').addClass('fade').val(searchText).focus(function(){
+					if(searchText === $(this).val()){$(this).removeClass('fade').val('');}
+				}).blur(function(){
+					if(!$(this).val())$(this).addClass('fade').val(searchText);
+				});
 			});
 			
 			function getURLParameter(name) {
-			    return unescape(
-				(RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
-			    );
+			    return unescape((RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]);
 			}
 			function translationURL(languageCode) {
 				url = window.parent.location.href;
@@ -82,17 +104,17 @@
 	</head>
 	<body>
 
-<table id="page"><tr>
+<table id="page" cellspacing="0" cellpadding="0"><tr>
 
-<td id="index">
-
-
-	<div class="box" style="text-align:center;">
+<td id="logo" class="box">
+	<div style="text-align:center;">
 	  <img src="haitianwork.png" title="Haitian Maroon with hammer in place of knife" style="width:150px"/>
 	  <h2 style="padding:0;margin:0">Rebuild Haiti</h2>
 	</div>
-	<div class="box">
-          <ul>
+</td><!-- logo -->
+
+<td id="utilities" class="box" width="300px">
+	  <ul>
 	    <li>
 	      <h2>Translate</h2>
 	      <a href="#" onclick="window.parent.location.href=translationURL('en')" class="small box">English</a>
@@ -100,41 +122,55 @@
 	      <a href="#" onclick="window.parent.location.href=translationURL('ht')" class="small box">Kreyol</a>
 	    </li>
 	    <li>&nbsp;</li>
-            <li>
-	      <h2>Index</h2>
-              <a href="#" onclick="$('.column').show('fast')" class="small box">Show all</a>
-	      <a href="#" onclick="$('.column').hide('fast')" class="small box">Hide all</a>
-            </li>
 	    <li>&nbsp;</li>
-	    <li><h3>Background</h3></li>
-            <li><a href="#culture" toggle="culture">Culture</a></li>
-            <li><a href="#history" toggle="history">History</a></li>
-            <li><a href="#geography" toggle="geography">Geography</a></li>
-            <li><a href="#government" toggle="government">Government</a></li>
-            <li><a href="#economy" toggle="economy">Economy</a></li>
-            <li><a href="#society" toggle="society">Society</a></li>
-	    <li>&nbsp;</li>
-	    <li><h3>Links</h3></li>
-            <li><a href="#govlinks" toggle="govlinks">Government</a></li>
-            <li><a href="#tourism" toggle="tourism">Tourism</a></li>
-	    <li><a href="#miscellaneous" toggle="miscellaneous">Miscellaneous</a></li>
-	    <li>&nbsp;</li>
-	    <li><h3>Multimedia</h3></li>
-	    <li><a href="#book" toggle="book">Books</a></li>
-	    <li><a href="#music" toggle="music">Music</a></li>
-            <li><a href="#video" toggle="video">Video</a></li>
-	    <li><a href="#documentary" toggle="documentary">Documentaries</a></li>
-          </ul>
-        </div>
+	    <li>
+	      <h2>Search <span class="center comment fade">Powered by Premye.ht</span></h2>
+	      <form id="search" action="http://www.premye.ht/index.php" method="get">
+	        <input type="text" name="query" id="query" size="20" value="">
+	        <input type="hidden" name="search" value="1"> 
+	      </form>
+	    </li>
+	  </ul>
+</td><!-- utilities -->
 
+<td style="width:100%">&nbsp;</td>
+</tr><tr>
 
+<td id="index">
+	<ul class="box">
+          <li>
+	    <h2>Index</h2>
+            <a href="#" onclick="$('.column').show('fast')" class="small box">Show all</a>
+	    <a href="#" onclick="$('.column').hide('fast')" class="small box">Hide all</a>
+          </li>
+	  <li>&nbsp;</li>
+	  <li><h3>Background</h3></li>
+          <li><a href="#culture" toggle="culture">Culture</a></li>
+          <li><a href="#history" toggle="history">History</a></li>
+          <li><a href="#geography" toggle="geography">Geography</a></li>
+          <li><a href="#government" toggle="government">Government</a></li>
+          <li><a href="#economy" toggle="economy">Economy</a></li>
+          <li><a href="#society" toggle="society">Society</a></li>
+          <li>&nbsp;</li>
+	  <li><h3>Links</h3></li>
+          <li><a href="#govlinks" toggle="govlinks">Government</a></li>
+          <li><a href="#tourism" toggle="tourism">Tourism</a></li>
+	  <li><a href="#miscellaneous" toggle="miscellaneous">Miscellaneous</a></li>
+	  <li>&nbsp;</li>
+	  <li><h3>Multimedia</h3></li>
+	  <li><a href="#book" toggle="book">Books</a></li>
+	  <li><a href="#music" toggle="music">Music</a></li>
+          <li><a href="#video" toggle="video">Video</a></li>
+	  <li><a href="#documentary" toggle="documentary">Documentaries</a></li>
+	</ul>
+<br/><br/><br/><br/><br/><br/><br/>
 </td><!-- Index -->
 
-<td id="main">
+<td id="main" colspan="10">
 
 
 <ul class="column" id="tourism">
-  <li><h2><a href="http://www.haiticherie.ht/">Haiti Cherie</a></h2></li>
+  <li><h2><a href="http://www.haiticherie.ht/">Tourism</a></h2></li>
   <li><a href="http://www.haiticherie.ht/PDF/Brochure_Magic_Haiti.pdf">Brochure</a></li>
   <li>&nbsp;</li>
   <li><a href="http://www.haiticherie.ht/EN/destinations/sites_historiques.php">Historical sites</a></li>
@@ -297,9 +333,29 @@
 <ul class="column" id="miscellaneous">
   <li><h2>Miscellaneous links</h2></li>
   <li><a href="http://www.doingbusiness.org/data/exploreeconomies/haiti">Doing business</a></li>
-  <li>test
+  <li><a href="http://www.haiti-reference.com/politique/diplomat/ambass-haiti.html">Ambassies</a>
     <ul>
-      <li>test2</li>
+      <li><a href="#">Argentina</a></li>
+      <li><a href="#">Bahamas</a></li>
+      <li><a href="#">Belgium</a></li>
+      <li><a href="#">Bresil</a></li>
+      <li><a href="#">Canada</a></li>
+      <li><a href="#">Chili</a></li>
+      <li><a href="#">Columbia</a></li>
+      <li><a href="#">Cuba</a></li>
+      <li><a href="#">Dominican Republic</a></li>
+      <li><a href="#">France</a></li>
+      <li><a href="#">Germany</a></li>
+      <li><a href="#">Italy</a></li>
+      <li><a href="#">Jamaica</a></li>
+      <li><a href="#">Japan</a></li>
+      <li><a href="#">Mexico</a></li>
+      <li><a href="#">Spain</a></li>
+      <li><a href="#">South Korea</a></li>
+      <li><a href="#">Taiwan</a></li>
+      <li><a href="#">United States</a></li>
+      <li><a href="#">Vatican</a></li>
+      <li><a href="#">Venezuela</a></li>
     </ul>
   </li>
 </ul><!-- Miscellaneous -->
@@ -354,7 +410,6 @@
 
 </td><!-- Main -->
 </tr></table>
-
 
 	</body>
 </html>
