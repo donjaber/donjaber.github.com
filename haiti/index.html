@@ -71,12 +71,6 @@
 			var url = location.href;
 			
 			$(function() {
-				$( ".column, .box" ).css({ top: getCookie("positionY"+$(this).attr('id')), left: getCookie("positionX"+$(this).attr('id')) })
-				.draggable({ stop: function (event, ui) {
-						setCookie("positionX"+$(this).attr('id'), ui.position.left, 100);
-						setCookie("positionY"+$(this).attr('id'), ui.position.top, 100);
-					} 
-				});
 				$( "ul.column li ul" ).each(function(){
 					var childUL = $(this).hide();
 					childUL.before($('<button class="more">+</button>').click(function(){
@@ -98,6 +92,12 @@
 					if(searchText === $(this).val()){$(this).removeClass('fade').val('');}
 				}).blur(function(){
 					if(!$(this).val())$(this).addClass('fade').val(searchText);
+				});
+				$( ".column0, .box0" ).css({ top: getCookie("positionY"+$(this).attr('id'))*1, left: getCookie("positionX"+$(this).attr('id'))*1 })
+				.draggable({ stop: function (event, ui) {
+						setCookie("positionX"+$(this).attr('id'), ui.position.left, 100);
+						setCookie("positionY"+$(this).attr('id'), ui.position.top, 100);
+					} 
 				});
 			});
 			
