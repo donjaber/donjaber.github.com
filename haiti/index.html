@@ -29,7 +29,7 @@
 			h2 {font-size:1.1em;}
 			h3 {font-size:1em;}
 			.column {float:left;}
-			.column, .box, .more {
+			.column, .box, button.more {
 				padding:10px;margin:1px;border:1px solid #fff;background:#fff;width:auto;font-size:0.8em;
 
 				-moz-border-radius: 1em;
@@ -45,7 +45,7 @@
     				filter: progid:DXImageTransform.Microsoft.Gradient(
                 		StartColorStr='#ccccff', EndColorStr='#ffcccc', GradientType=0);	
 			}
-			.more {padding: 0.25em 1em;}
+			button.more {padding: 0.25em 1em;}
 			ul {list-style-type:none;padding:0;}
 			ul li ul {padding: 0 0 0 1em;}
 			.border {border:1px solid black;}
@@ -57,13 +57,14 @@
 			.fade {color:#aaa;}
 			.inline {display:inline;}
 			.floatleft {float:left;}
-			
+
 			table td {vertical-align:top;margin-top:0;}
 			#page {width:100%;}
 			#utilities {white-space:nowrap;}
 			#index {max-width:300px;white-space:nowrap;}
 			#main {width:100%;}
 			button.more {font-family:monospace;font-size:x-small;}
+			div.more {display:inline;text-align:right;padding:0;margin:0;position:relative;}
 		</style>
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script>
@@ -73,7 +74,7 @@
 			$(function() {
 				$( "ul.column li ul" ).each(function(){
 					var childUL = $(this).hide();
-					childUL.before($('<button class="more">+</button>').click(function(){
+					childUL.before($('<div class="more"><button class="more">+</button></div>').click(function(){
 						childUL.toggle('fast');
 						if('+'===$(this).html()){$(this).html('-');}else{$(this).html('+');}
 					}));
@@ -141,7 +142,7 @@
   <td id="index">
 	<ul class="box center">
 	  <li>
-	    <img src="haitianwork.png" title="Haitian Maroon with hammer in place of knife" style="width:150px"/>
+	    <img src="haitianwork.png" title="Haitian Maroon with hammer in place of a machete" style="width:150px"/>
 	    <h2 style="padding:0;margin:0">Rebuild Haiti Project</h2>
 	  </li>
 	  <li>
@@ -182,6 +183,7 @@
 	  <li><h3>Multimedia</h3></li>
 	  <li><a href="#book" toggle="book">Books</a></li>
 	  <li><a href="#music" toggle="music">Music</a></li>
+	  <li><a href="#radio" toggle="radio">Radio</a></li>
           <li><a href="#video" toggle="video">Video</a></li>
 	  <li><a href="#documentary" toggle="documentary">Documentaries</a></li>
 	</ul>
@@ -191,7 +193,7 @@
 <td id="main" colspan="10">
 
 
-<ul class="column" id="tourism">
+<ul class="column" id="tourism" class="position:relative:top:10px;left:10px;">
   <li><h2><a href="http://www.haiticherie.ht/">Tourism</a></h2></li>
   <li><a href="http://www.haiticherie.ht/PDF/Brochure_Magic_Haiti.pdf">Brochure</a></li>
   <li>&nbsp;</li>
@@ -227,7 +229,7 @@
   <li><a href="http://translate.google.com/translate?hl=en&sl=fr&tl=en&u=http://www.primature.gouv.ht/">Prime Minister</a></li>
   <li><a href="http://translate.google.com/translate?hl=en&sl=fr&tl=en&u=http://www.chambredesdeputes.parlementhaitien.ht/">Chamber of Deputies</a></li>
   <li><a href="http://translate.google.com/translate?hl=en&sl=fr&tl=en&u=http://www.lesenat.parlementhaitien.ht/">Senate</a></li>
-  <li><a href="http://translate.google.com/translate?hl=en&sl=fr&tl=en&u=http://www.eduhaiti.gou/">National education & vocational training</a></li>
+  <li><a href="http://translate.google.com/translate?hl=en&sl=fr&tl=en&u=http://www.eduhaiti.gouv.ht/">Education & vocational training</a></li>
   <li><a href="http://translate.google.com/translate?hl=en&sl=fr&tl=en&u=http://www.agriculture.gouv.ht/">Agriculture & natural resources</a></li>
   <li><a href="http://translate.google.com/translate?hl=en&sl=fr&tl=en&u=http://www.mtptc.gouv.ht/">Public works, transport & communications</a></li>
   <li><a href="http://translate.google.com/translate?hl=en&sl=fr&tl=en&u=http://www.mae.gouv.ht/">Foreign affairs & cults</a></li>
@@ -235,7 +237,7 @@
   <li><a href="http://translate.google.com/translate?hl=en&sl=fr&tl=en&u=http://www.mhave.gouv.ht/">Haitians living abroad</a></li>
   <li><a href="http://translate.google.com/translate?hl=en&sl=fr&tl=en&u=http://www.seiph.gouv.ht/">Integration of people with disabilities</a></li>
   <li><a href="http://translate.google.com/translate?hl=en&sl=fr&tl=en&u=http://www.cnmp.gouv.ht/">Public markets</a></li>
-  <li><a href="http://translate.google.com/translate?hl=en&sl=fr&tl=en&u=http://www.oni.gouv.ht/">National identification office</a></li>
+  <li><a href="http://translate.google.com/translate?hl=en&sl=fr&tl=en&u=http://www.oni.gouv.ht/">Identification office</a></li>
   <li><a href="http://translate.google.com/translate?hl=en&sl=fr&tl=en&u=http://www.conatel.gouv.ht/">Telecommunications</a></li>
   <li><a href="http://translate.google.com/translate?hl=en&sl=fr&tl=en&u=http://www.mci.gouv.ht/">Commerce and Industry</a></li>
   <li><a href="http://translate.google.com/translate?hl=en&sl=fr&tl=en&u=http://www.apn.gouv.ht/">Port authority</a></li>
@@ -245,7 +247,7 @@
   <li><a href="http://translate.google.com/translate?hl=en&sl=fr&tl=en&u=http://www.anhhaiti.org/">National archives</a></li>
   <li><a href="http://translate.google.com/translate?hl=en&sl=fr&tl=en&u=http://www.bnconline.com/">National bank of credit</a></li>
   <li><a href="http://translate.google.com/translate?hl=en&sl=fr&tl=en&u=http://www.bme.gouv.ht/">Mines & energy</a></li>
-  <li><a href="http://translate.google.com/translate?hl=en&sl=fr&tl=en&u=http://www.tnh.ht/">National television</a></li>
+  <li><a href="http://translate.google.com/translate?hl=en&sl=fr&tl=en&u=http://www.tnh.ht/">Television</a></li>
   <li><a href="http://translate.google.com/translate?hl=en&sl=fr&tl=en&u=http://www.cnc.coop/">Coucil of cooperatives</a></li>
   <li><a href="http://translate.google.com/translate?hl=en&sl=fr&tl=en&u=http://www.incah-haiti.gouv.ht/">Institute of coffee</a></li>
   <li><a href="http://translate.google.com/translate?hl=en&sl=fr&tl=en&u=http://www.bureaudegestion.gouv.ht/">Development aid program management</a></li>
@@ -280,15 +282,15 @@
   | <a href="http://en.wikipedia.org/wiki/Coat_of_arms_of_Haiti">Coats of arms</a> 
   </li>
   <li><a href="http://en.wikipedia.org/wiki/Haitian_Creole_language">Haitian Creole</a></li>
-  <li><a href="http://en.wikiquote.org/wiki/Haitian_proverbs">Proverbs</a></li>
   <li><a href="http://en.wikipedia.org/wiki/Public_holidays_in_Haiti">Holidays</a></li>
+  <li><a href="http://en.wikiquote.org/wiki/Haitian_proverbs">Proverbs</a></li>
   <li><a href="http://en.wikipedia.org/wiki/Haitian_art">Art</a></li>
-  <li><a href="http://en.wikipedia.org/wiki/Music_of_Haiti">Music</a></li>
   <li><a href="http://en.wikipedia.org/wiki/Cinema_of_Haiti">Cinema</a></li>
   <li><a href="http://en.wikipedia.org/wiki/Haitian_cuisine">Cuisine</a></li>
   <li><a href="http://en.wikipedia.org/wiki/Haitian_literature">Literature</a></li>
-  <li><a href="http://en.wikipedia.org/wiki/Religion_in_Haiti">Religion</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Music_of_Haiti">Music</a></li>
   <li><a href="http://en.wikipedia.org/wiki/Haitian_mythology">Mythology</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Religion_in_Haiti">Religion</a></li>
   <li><a href="http://en.wikipedia.org/wiki/Category:Sport_in_Haiti">Sports</a></li>
   <li><a href="http://en.wikipedia.org/wiki/List_of_people_on_stamps_of_Haiti">List of people on stamps</a></li>
   <li><a href="http://en.wikipedia.org/wiki/National_Museum_of_Haiti">National Museum</a></li>
@@ -421,7 +423,7 @@
 <ul class="column" id="book">
   <li><h2>Books</h2></li>
   <li><a href="http://www.amazon.com/Black-Jacobins-Toussaint-LOuverture-Revolution/dp/0679724672">The Black Jacobins</a></li>
-</ul><!-- Documentary -->
+</ul><!-- Book -->
 
 <ul class="column" id="video">
   <li><h2>Video</h2></li>
@@ -432,6 +434,154 @@
   <li><h2>Documentaries</h2></li>
   <li><a href="http://www.pbs.org/wnet/black-in-latin-america/featured/haiti-the-dominican-republic-an-island-divided-watch-full-episode/165/">Haiti & the Dominican Republic</a></li>
 </ul><!-- Documentary -->
+
+<ul class="column" id="newspaper">
+  <li><h2><a href="http://www.onlinenewspapers.com/haiti.htm">Newspapers</a></h2></li>
+  <li><a href="http://www.haitienmarche.com/">Haiti En Marche</a></li>
+  <li><a href="http://haitiglobe.com/">Haiti Globe</a></li>
+  <li><a href="http://www.haiti-info.com/">Haiti Info</a></li>
+  <li><a href="http://www.haiti-liberte.com/">Haiti Liberte</a></li>
+  <li><a href="http://www.haitiprogres.com/">Haiti Progres</a></li>
+  <li><a href="http://www.haitiantimes.com/">Haitian Times</a></li>
+  <li><a href="http://www.lenouvelliste.com/">Le Nouvelliste</a></li>
+</ul><!-- Newspaper -->
+
+<ul class="column" id="radio">
+  <li><h2><a href="http://radiostationworld.com/locations/haiti/radio_websites.asp">Radio</a></h2></li>
+  <li>Cap Haitien
+    <ul>
+	  <li>-AM RADIO-</li>
+	  <li>840<a href="http://www.radio4veh.org/">Radio 4VEH</a></li>
+	  <li>1230<a href="http://radiovoixavemaria.com/">Radio Voix Ave Maria</a></li>
+	  <li>&nbsp;</li>
+	  <li>-FM RADIO-</li>
+	  <li>92.5<a href="http://www.atlantikhaiti.com/">Radyo Atlantik</a></li>
+	  <li>92.9<a href="http://radioidealehaiti.com/">Radio Ideale</a></li>
+	  <li>93.5<a href="http://radiovascofmhaiti.com/">Antilles Internationales</a></li>
+	  <li>94.7<a href="http://www.radio4veh.org/">Radio 4VEH</a></li>
+	  <li>94.9<a href="http://www.radiokontakinterhaiti.com/">Radio Kontak Inter</a></li>
+	  <li>96.9<a href="http://www.radiomusiquefm.com/">Radio Musique</a></li>
+	  <li>97.3<a href="http://www.radionirvanafm.com/">Radio Nirvana</a></li>
+	  <li>98.1<a href="http://www.radiolumiere.org/">Radio Lumiere</a></li>
+	  <li>98.5<a href="http://www.radiovoixavemaria.com/">Radio Voix Ave Maria</a></li>
+	  <li>99.7<a href="http://www.gammafm.com/">Radio Gamma</a></li>
+	  <li>101.7<a href="http://www.radiopassionhaiti.com/">Radio Passion</a></li>
+	  <li>104.2<a href="http://www.radiotelevenushaiti.com/">Radio Venus FM</a></li>
+	  <li>104.7<a href="http://radioteleparadis.com/">Radio Tele Paradis</a></li>
+	  <li>105.7<a href="http://www.radiovision2000haiti.net/">Radio Vision 2000</a></li>
+	  <li>106.9<a href="http://www.radiosanssouci.com/">Sans Souci FM</a></li>
+    </ul>
+  </li>
+  <li>Plateau Central
+    <ul>
+      <li>-AM RADIO-</li>
+      <li>720<a href="http://www.radiolumiere.org/">Radio Lumiere</a></li>
+      <li>740<a href="http://www.radiolumiere.org/">Radio Lumiere</a></li>
+      <li>940<a href="http://radiosaintmarc.com/">Radio Saint-Marc</a></li>
+      <li>&nbsp;</li>
+      <li>-FM RADIO-</li>
+      <li>88.1<a href="http://www.papillonfmhaiti.com/">Radio Papillon</a></li>
+      <li>89.1<a href="http://www.radiomedia89.com/">Radio Media 89</a></li>
+      <li>89.7<a href="http://www.voixdeselus.org/">Radio Voix Des Elus</a></li>
+      <li>91.3<a href="http://sunfmhaiti.com/">Sun FM</a></li>
+      <li>91.7<a href="http://www.radiocentralefm.com/">Radio Centrale</a></li>
+      <li>94.1<a href="http://www.radiojupiterplushaiti.com/">Radio Jupiter Plus</a></li>
+      <li>95.3<a href="http://www.teleradioprovinciale.com/radio.htm">Radio Provinciale</a></li>
+      <li>96.5<a href="http://www.radioxplosion.com/">Xplosion FM</a></li>
+      <li>96.9<a href="http://www.kissfmhaiti.com/">Kiss FM</a></li>
+      <li>98.1<a href="http://www.radiovision2000haiti.net/">Radio Vision 2000</a></li>
+      <li>99.1<a href="http://www.escadrons.com/">RTC-Radio Tele Caleb</a></li>
+      <li>99.9<a href="http://www.radiovision2000haiti.net/">Radio Vision 2000</a></li>
+      <li>100.5<a href="http://www.radyolevekanpe.com/">Radyo LeveKanpe</a></li>
+      <li>101.3<a href="http://radiosupergemini.com/">Radio Super Gemini</a></li>
+      <li>101.9<a href="http://www.radiodeltastereo.com/">Radio Delta Stereo</a></li>
+      <li>102.9<a href="http://www.radioteteatete.com/">Radio Tete a Tete</a></li>
+    </ul>
+  </li>
+  <li>Jacmel
+    <ul>
+      <li>-FM RADIO-</li>
+      <li>88.9<a href="http://www.radiovision2000haiti.net/">Radio Tele Express</a></li>
+      <li>90.9<a href="http://www.radiovision2000haiti.net/">Radio Vision 2000</a></li>
+      <li>92.5<a href="http://www.radionegritude.com/">Radio Negritude</a></li>
+      <li>93.1<a href="http://www.ambiancefm.com/">Ambiance FM</a></li>
+      <li>103.1<a href="http://www.radiohispaniolajacmel.com/">Radio Hispaniola</a></li>
+    </ul>
+  </li>
+  <li>Les Cayes
+    <ul>
+      <li>-AM RADIO-</li>
+      <li>760<a href="http://www.radiolumiere.org/">Radio Lumiere</a></li>
+      <li>780<a href="http://www.radiolumiere.org/">Radio Lumiere</a></li>
+      <li>&nbsp;</li>
+      <li>-FM RADIO-</li>
+      <li>92.5<a href="http://www.radioshekina.com/">Radio Shekina</a></li>
+      <li>97.9<a href="http://tmsplus.com/">TMS Plus</a></li>
+      <li>98.5<a href="http://www.radiovibration.com/">Radio Vibration FM</a></li>
+      <li>100.5<a href="http://radiomegasud.com/">Megasud 100.5</a></li>
+      <li>101.7<a href="http://www.radiovision2000haiti.net/">Radio Vision 2000</a></li>
+      <li>102.5<a href="http://www.matinet.com/macaya.htm">Radio Macaya</a></li>
+      <li>104.9<a href="http://www.labrisefm.com/">La Brise FM</a></li>
+      <li>107.9<a href="http://www.radiolumiere.org/">Radio Lumiere</a></li>
+    </ul>
+  </li>
+  <li>Port-au-Prince
+    <ul>
+      <li>-AM RADIO-</li>
+      <li>590<a href="http://www.aristidefoundation.haiti.org/english/radyoeng.html">Radyo Timoun</a></li>
+      <li>660<a href="http://www.radiolumiere.org/">Radio Lumiere</a></li>
+      <li>910<a href="http://www.radiokiskeya.com/">Kiskeya</a></li>
+      <li>1050<a href="http://www.radyoginen.com/">Radyo Ginen</a></li>
+      <li>1240<a href="http://www.radioantillesinternationale.com/">RAI-Radio Antilles Internationales</a></li>
+      <li>1280<a href="http://www.metropolehaiti.com/">Metropole</a></li>
+      <li>1470<a href="http://www.primenet.com/~rafreid/radio.html">Radio Lakansyel</a></li>
+      <li>1560<a href="http://www.tagnet.org/4vve/">Voix de l'Esperance</a></li>
+      <li>&nbsp;</li>
+      <li>-FM RADIO-</li>
+      <li>88.5<a href="http://www.radiokiskeya.com/">Kiskeya</a></li>
+      <li>89.7<a href="http://www.tagnet.org/4vve/">Voix de l'Esperance</a></li>
+      <li>90.1<a href="http://www.radio1haiti.com/">Radio One</a></li>
+      <li>90.5<a href="http://www.signalfmhaiti.com/">Signal FM</a></li>
+      <li>90.9<a href="http://www.aristidefoundation.haiti.org/english/radyoeng.html">Radyo Timoun</a></li>
+      <li>91.3<a href="http://www.radiotropichaiti.com/">Tropic FM</a></li>
+      <li>92.1<a href="http://www.radiolumiere.org/">Radio Lumiere</a></li>
+      <li>92.9<a href="http://www.radyoginen.com/">Radyo Ginen</a></li>
+      <li>93.3<a href="http://www.ambiancefm.com/">Radio Ambiance</a></li>
+      <li>94.1<a href="http://www.palimpalem.com/6/radionouvellegeneration/index.html">Radio Nouvelle Generation</a></li>
+      <li>94.4<a href="http://www.caraibesfm.com/">Caraibes FM</a></li>
+      <li>94.9<a href="http://minustahfm.org/">Minustah FM</a></li>
+      <li>95.3<a href="http://www.radiotropicale.com/">Tropicale Internationale</a></li>
+      <li>95.7<a href="http://www.radiohorizon2000haiti.com/">Radio Horizon 2000</a></li>
+      <li>96.1<a href="http://www.rch2000.net/">RCH2000</a></li>
+      <li>96.5<a href="http://skyfmradio.com/">Sky FM</a></li>
+      <li>97.3<a href="http://www.megastarfmhaiti.com/">Megastar</a></li>
+      <li>97.9<a href="http://www.radiolumiere.org/">Radio Lumiere</a></li>
+      <li>98.5<a href="http://radioiboht.com/">Radio Ibo</a></li>
+      <li>99.3<a href="http://www.radiovision2000haiti.net/">Radio Vision 2000</a></li>
+      <li>99.7<a href="http://sweetfmhaiti.com/">Sweet FM</a></li>
+      <li>100.1<a href="http://www.metropolehaiti.com/">Metropole</a></li>
+      <li>100.5<a href="http://www.rfi.fr/">RFI-Haiti</a></li>
+      <li>100.9<a href="http://www.radiodeltastereo.com/">Radio Delta Stereo</a></li>
+      <li>101.7<a href="http://www.energiefm.com/">Energie FM</a></li>
+      <li>102.5<a href="http://www.radiozenithfm.com/">Zenith FM</a></li>
+      <li>102.9<a href="http://www.radiosuperstarhaiti.com/">Radio Super Star</a></li>
+      <li>103.3<a href="http://melodiefmhaiti.com/">Melodie</a></li>
+      <li>103.7<a href="http://www.primenet.com/~rafreid/radio.html">Radio Lakansyel</a></li>
+      <li>104.1<a href="http://radiosodecservice.com/">Radio Sodec Services</a></li>
+      <li>104.5<a href="http://radiogalaxiehaiti.com/">Galaxie FM</a></li>
+      <li>105.7<a href="http://www.radiosoleil.org/">Radio Soleil</a></li>
+      <li>107.5<a href="http://radiosolidaritehaiti.net/">Radio Solidarite</a></li>
+      <li>107.7<a href="http://www.scoopfmhaiti.com/">Scoop FM</a></li>
+    </ul>
+  </li>
+  <li>Port-de-Paix
+    <ul>
+      <li>-FM RADIO-</li>
+      <li>92.5<a href="http://www.radiovision2000haiti.net/">Radio Vision 2000</a></li>
+      <li>102.3<a href="http://www.radiobalade.com/">Radio Balade FM</a></li>
+    </ul>
+  </li>
+</ul><!-- Newspaper -->
 
 
 </td><!-- Main -->
