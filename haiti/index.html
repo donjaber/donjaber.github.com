@@ -1,6 +1,7 @@
 <html>
 	<head>
-		<title>Haiti - Portal</title>
+		<title>Rebuild Haiti Project</title>
+		<link rel="icon" type="image/gif" href="flag_haiti.gif">
 		<style>
 			body {
 				font-family:helvetica;color: #666;
@@ -13,6 +14,8 @@
     				height:1%;/*IE Fix to give it hasLayout*/
     				filter: progid:DXImageTransform.Microsoft.Gradient(
                 		StartColorStr='#0000ff', EndColorStr='#ff0000', GradientType=0);
+
+				background-attachment: fixed;
 			}
 			#page {
 				background-image: url(coats-of-arms.png);
@@ -25,13 +28,13 @@
 			h1,h2,h3,h4,h5 {padding:0 0 0 0;margin:0;}
 			h2 {font-size:1.1em;}
 			h3 {font-size:1em;}
-			.column {float:left;display:none;}
-			.column, .box {
-				padding:10px;border:1px solid #fff;background:#fff;width:auto;font-size:0.8em;
+			.column {float:left;}
+			.column, .box, .more {
+				padding:10px;margin:1px;border:1px solid #fff;background:#fff;width:auto;font-size:0.8em;
 
-				-moz-border-radius: 2em;
- 				-webkit-border-radius: 2em;
- 				border-radius: 2em 2em 2em 2em; /* for some reason you have to declare all corners in ie*/
+				-moz-border-radius: 1em;
+ 				-webkit-border-radius: 0.5em;
+ 				border-radius: 0.5em; /* 1em 1em 1em; /* for some reason you have to declare all corners in ie*/
 
 				background: -moz-linear-gradient(top, #ccccff, #ffcccc);
     				/* Chrome, Safari:*/
@@ -42,7 +45,10 @@
     				filter: progid:DXImageTransform.Microsoft.Gradient(
                 		StartColorStr='#ccccff', EndColorStr='#ffcccc', GradientType=0);	
 			}
-			ul {list-style-type:none;padding:0 0 0 1em;}
+			.more {padding: 0.25em 1em;}
+			ul {list-style-type:none;padding:0;}
+			ul li ul {padding: 0 0 0 1em;}
+			.border {border:1px solid black;}
 			.center {text-align:center;}
 			.clear {clear:both;}
 			.small {font-size: 0.75em;}
@@ -61,15 +67,20 @@
 		</style>
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script>
-		<script type="text/javascript">$(function() {$( "ul.columns > li, .column, .box" ).draggable();});</script>
 		<script type="text/javascript">
 			var url = location.href;
 			
 			$(function() {
+				$( ".column, .box" ).css({ top: getCookie("positionY"+$(this).attr('id')), left: getCookie("positionX"+$(this).attr('id')) })
+				.draggable({ stop: function (event, ui) {
+						setCookie("positionX"+$(this).attr('id'), ui.position.left, 100);
+						setCookie("positionY"+$(this).attr('id'), ui.position.top, 100);
+					} 
+				});
 				$( "ul.column li ul" ).each(function(){
 					var childUL = $(this).hide();
 					childUL.before($('<button class="more">+</button>').click(function(){
-						childUL.toggle();
+						childUL.toggle('fast');
 						if('+'===$(this).html()){$(this).html('-');}else{$(this).html('+');}
 					}));
 				});
@@ -100,45 +111,55 @@
 				}
 				return 'http://translate.google.com/translate?u='+escape(url) +'&tl='+languageCode;
 			}
+			function setCookie(c_name,value,exdays)
+			{
+				var exdate=new Date();
+				exdate.setDate(exdate.getDate() + exdays);
+				var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
+				document.cookie=c_name + "=" + c_value;
+			}
+			function getCookie(c_name)
+			{
+				var i,x,y,ARRcookies=document.cookie.split(";");
+				for (i=0;i<ARRcookies.length;i++)
+				{
+				  x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
+				  y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
+				  x=x.replace(/^\s+|\s+$/g,"");
+				  if (x==c_name)
+				  {
+				    return unescape(y);
+				  }
+				}
+			}
 		</script>
 	</head>
 	<body>
 
 <table id="page" cellspacing="0" cellpadding="0"><tr>
 
-<td id="logo" class="box">
-	<div style="text-align:center;">
-	  <img src="haitianwork.png" title="Haitian Maroon with hammer in place of knife" style="width:150px"/>
-	  <h2 style="padding:0;margin:0">Rebuild Haiti</h2>
-	</div>
-</td><!-- logo -->
-
-<td id="utilities" class="box">
-	  <ul class="inline">
-	    <li>
-	      <h2>Translate</h2>
-	      <a href="#" onclick="window.parent.location.href=translationURL('en')" class="small box">English</a>
-	      <a href="#" onclick="window.parent.location.href=translationURL('fr')" class="small box">Francais</a>
-	      <a href="#" onclick="window.parent.location.href=translationURL('ht')" class="small box">Kreyol</a>
-	    </li>
-	    <li>&nbsp;</li>
-	    <li>&nbsp;</li>
-	    <li>
-	      <h2>Search <span class="center comment fade">Powered by Premye.ht</span></h2>
-	      <form id="search" action="http://www.premye.ht/index.php" method="get">
-	        <input type="text" name="query" id="query" size="20" value="">
-	        <input type="hidden" name="search" value="1"> 
-	      </form>
-	    </li>
-	  </ul>
-</td><!-- utilities -->
-
-<td style="width:100%">&nbsp;</td>
-</tr><tr>
-
-<td id="index">
-	<div class="box">
-	<ul>
+  <td id="index">
+	<ul class="box center">
+	  <li>
+	    <img src="haitianwork.png" title="Haitian Maroon with hammer in place of knife" style="width:150px"/>
+	    <h2 style="padding:0;margin:0">Rebuild Haiti Project</h2>
+	  </li>
+	  <li>
+	    <a href="#" onclick="window.parent.location.href=translationURL('en')" class="small box">English</a>
+	    <a href="#" onclick="window.parent.location.href=translationURL('fr')" class="small box">Francais</a>
+	    <a href="#" onclick="window.parent.location.href=translationURL('ht')" class="small box">Kreyol</a>
+	  </li>
+	</ul>
+	<ul class="box">
+	  <li>
+	    <h2>Search <span class="center comment fade">Powered by Premye.ht</span></h2>
+	    <form id="search" action="http://www.premye.ht/index.php" method="get">
+	      <input type="text" name="query" id="query" size="20" value="">
+	      <input type="hidden" name="search" value="1"> 
+	    </form>
+	  </li>
+	</ul>
+	<ul class="box">
           <li>
 	    <h2>Index</h2>
             <a href="#" onclick="$('.column').show('fast')" class="small box">Show all</a>
@@ -164,7 +185,6 @@
           <li><a href="#video" toggle="video">Video</a></li>
 	  <li><a href="#documentary" toggle="documentary">Documentaries</a></li>
 	</ul>
-	</div>
 <br/><br/><br/><br/><br/><br/><br/>
 </td><!-- Index -->
 
@@ -175,22 +195,26 @@
   <li><h2><a href="http://www.haiticherie.ht/">Tourism</a></h2></li>
   <li><a href="http://www.haiticherie.ht/PDF/Brochure_Magic_Haiti.pdf">Brochure</a></li>
   <li>&nbsp;</li>
+  <li>-Destinations & Tours-</li>
   <li><a href="http://www.haiticherie.ht/EN/destinations/sites_historiques.php">Historical sites</a></li>
   <li><a href="http://www.haiticherie.ht/EN/destinations/mer_et_plages.php">Oceans & Beaches</a></li>
   <li><a href="http://www.haiticherie.ht/EN/destinations/villes_principales.php">Major cities</a></li>
   <li><a href="http://www.haiticherie.ht/EN/destinations/montagnes.php">Mountains</a></li>
   <li>&nbsp;</li>
+  <li>-Activities-</li>
   <li><a href="http://www.haiticherie.ht/EN/activites/festivals.php">Carnaval & Rara</a></li>
   <li><a href="http://www.haiticherie.ht/EN/activites/festivals.php">Festivals & Patron Saints days</a></li>
   <li><a href="http://www.haiticherie.ht/EN/activites/congres.php">Congress & business meetings</a></li>
   <li><a href="http://www.haiticherie.ht/EN/activites/events.php">Events</a></li>
   <li><a href="http://www.haiticherie.ht/EN/activites/sante_et_spa.php">Spa & health</a></li>
   <li>&nbsp;</li>
+  <li>-Art & Culture-</li>
   <li><a href="http://www.haiticherie.ht/EN/culture/galeries_dart.php">Museum & art galleries</a></li>
   <li><a href="http://www.haiticherie.ht/EN/culture/gastronomie.php">Gastronomy</a></li>
   <li><a href="http://www.haiticherie.ht/EN/culture/spritualites_et_religion.php">Religion & spirituality</a></li>
   <li><a href="http://www.haiticherie.ht/EN/culture/musiques.php">Music</a></li>
   <li>&nbsp;</li>
+  <li>-Practical Information-</li>
   <li><a href="http://www.haiticherie.ht/EN/infos/hebergement.php">Accomodations</a></li>
   <li><a href="http://www.haiticherie.ht/EN/infos/restauration.php">Food</a></li>
   <li><a href="http://www.haiticherie.ht/EN/infos/transports.php">Transportation</a></li>
