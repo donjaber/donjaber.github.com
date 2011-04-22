@@ -28,13 +28,13 @@
 			h1,h2,h3,h4,h5 {padding:0 0 0 0;margin:0;}
 			h2 {font-size:1.1em;}
 			h3 {font-size:1em;}
-			.column {float:left;}
+			.column {float:left;height:1%;position:relative;}
 			.column, .box, button.more {
-				padding:10px;margin:1px;border:1px solid #fff;background:#fff;width:auto;font-size:0.8em;
+				padding:10px;margin:1px;border:1px solid #fff;background:#fff;font-size:0.8em;
 
-				-moz-border-radius: 1em;
+				-moz-border-radius: 0.5em;
  				-webkit-border-radius: 0.5em;
- 				border-radius: 0.5em; /* 1em 1em 1em; /* for some reason you have to declare all corners in ie*/
+ 				border-radius: 0.5em 0.5em 0.5em 0.5em; /* for some reason you have to declare all corners in ie*/
 
 				background: -moz-linear-gradient(top, #ccccff, #ffcccc);
     				/* Chrome, Safari:*/
@@ -45,14 +45,14 @@
     				filter: progid:DXImageTransform.Microsoft.Gradient(
                 		StartColorStr='#ccccff', EndColorStr='#ffcccc', GradientType=0);	
 			}
-			button.more {padding: 0em 1em;font-family:monospace;font-size:x-small;float:right;}
+			button.more {padding: 1px 6px;margin:0;height:1.4em;font-family:monospace;font-size:0.9em;float:right;}
 			ul {list-style-type:none;padding:0;}
 			ul li ul {padding: 0 0 0 1em;}
 			.border {border:1px solid black;}
 			.center {text-align:center;}
 			.clear {clear:both;}
 			.small {font-size: 0.75em;}
-			.comment {font-size: x-small;}
+			.comment {font-size: 0.75em;}
 			.nowrap {white-space:nowrap;}
 			.fade {color:#aaa;}
 			.inline {display:inline;}
@@ -76,14 +76,14 @@
 					var plusMinus = '-';
 					if (!childUL.hasClass('show')){childUL.hide(); plusMinus = '+';}
 					childUL.parent().css({'padding-right':'3em'}).before($('<button class="more">'+plusMinus+'</button>').click(function(){
-						childUL.toggle('fast');
+						childUL.slideToggle('fast');
 						if('+'===$(this).html()){$(this).html('-');}else{$(this).html('+');}
 					}));
 				});
 
 				$('body').append($('<span id="sorted"></span>'));
 				$('a[toggle]').each(function(){
-					$(this).click(function(){$('#'+$(this).attr('toggle')).toggle('fast');});
+					$(this).click(function(){$('#'+$(this).attr('toggle')).slideToggle('fast');});
 					$('#sorted').append($('#'+$(this).attr('toggle')).hide());
 				});
 				$('#main').append($('#sorted'));
@@ -164,8 +164,8 @@
 	<ul class="box">
           <li>
 	    <h2>Index</h2>
-            <a href="#" onclick="$('.column').show('fast')" class="small box">Show all</a>
-	    <a href="#" onclick="$('.column').hide('fast')" class="small box">Hide all</a>
+            <a href="#" onclick="$('.column').show()" class="small box">Show all</a>
+	    <a href="#" onclick="$('.column').hide()" class="small box">Hide all</a>
           </li>
 	  <li>&nbsp;</li>
 	  <li><h3>Background</h3></li>
