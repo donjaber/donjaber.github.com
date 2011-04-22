@@ -45,7 +45,8 @@
     				filter: progid:DXImageTransform.Microsoft.Gradient(
                 		StartColorStr='#ccccff', EndColorStr='#ffcccc', GradientType=0);	
 			}
-			button.more {padding: 0.25em 1em;}
+			button.more {padding: 0em 1em;}
+			button.more {font-family:monospace;font-size:x-small;}
 			ul {list-style-type:none;padding:0;}
 			ul li ul {padding: 0 0 0 1em;}
 			.border {border:1px solid black;}
@@ -64,8 +65,6 @@
 			#index {max-width:300px;white-space:nowrap;}
 			#rightpanel {width:250px;}
 			#main {width:100%;}
-			button.more {font-family:monospace;font-size:x-small;}
-			div.more {display:inline;text-align:right;padding:0;margin:0;position:relative;}
 		</style>
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script>
@@ -75,7 +74,7 @@
 			$(function() {
 				$( "ul li ul" ).each(function(){
 					var childUL = $(this).hide();
-					childUL.before($('<button class="more">+</button>').click(function(){
+					childUL.parent().css({'padding-right':'3em'}).before($('<button class="more" style="float:right">+</button>').click(function(){
 						childUL.toggle('fast');
 						if('+'===$(this).html()){$(this).html('-');}else{$(this).html('+');}
 					}));
