@@ -72,8 +72,10 @@
 			
 			$(function() {
 				$( "ul li ul" ).each(function(){
-					var childUL = $(this).hide();
-					childUL.parent().css({'padding-right':'3em'}).before($('<button class="more">+</button>').click(function(){
+					var childUL = $(this);
+					var plusMinus = '-';
+					if (!childUL.hasClass('show')){childUL.hide(); plusMinus = '+';}
+					childUL.parent().css({'padding-right':'3em'}).before($('<button class="more">'+plusMinus+'</button>').click(function(){
 						childUL.toggle('fast');
 						if('+'===$(this).html()){$(this).html('-');}else{$(this).html('+');}
 					}));
@@ -669,7 +671,7 @@
 <td id="rightpanel">
 
 <ul class="box">
-  <li>The "Rebuild Haiti Project" is a one page index of online information pertinent to Haiti.
+  <li><p>The "Rebuild Haiti Project" is a one page index of online information pertinent to Haiti.</p>
     <ul>
       <li>
 <p>The index packs a lot of information into a simple and organized interface allowing you to drill down the subjects which matter to you.</p>
