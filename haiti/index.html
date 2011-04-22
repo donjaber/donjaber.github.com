@@ -45,8 +45,7 @@
     				filter: progid:DXImageTransform.Microsoft.Gradient(
                 		StartColorStr='#ccccff', EndColorStr='#ffcccc', GradientType=0);	
 			}
-			button.more {padding: 0em 1em;}
-			button.more {font-family:monospace;font-size:x-small;}
+			button.more {padding: 0em 1em;font-family:monospace;font-size:x-small;float:right;}
 			ul {list-style-type:none;padding:0;}
 			ul li ul {padding: 0 0 0 1em;}
 			.border {border:1px solid black;}
@@ -74,7 +73,7 @@
 			$(function() {
 				$( "ul li ul" ).each(function(){
 					var childUL = $(this).hide();
-					childUL.parent().css({'padding-right':'3em'}).before($('<button class="more" style="float:right">+</button>').click(function(){
+					childUL.parent().css({'padding-right':'3em'}).before($('<button class="more">+</button>').click(function(){
 						childUL.toggle('fast');
 						if('+'===$(this).html()){$(this).html('-');}else{$(this).html('+');}
 					}));
@@ -179,7 +178,7 @@
           <li><a href="#govlinks" toggle="govlinks">Government</a></li>
           <li><a href="#tourism" toggle="tourism">Tourism</a></li>
 	  <li><a href="#miscellaneous" toggle="miscellaneous">Miscellaneous</a></li>
-	  <li><a href="#newspaper" toggle="newspaper">News Papers</a></li>
+	  <li><a href="#newspaper" toggle="newspaper">Newspapers</a></li>
 	  <li>&nbsp;</li>
 	  <li><h3>Multimedia</h3></li>
 	  <li><a href="#book" toggle="book">Books</a></li>
@@ -434,6 +433,32 @@
 <ul class="column" id="documentary">
   <li><h2>Documentaries</h2></li>
   <li><a href="http://www.pbs.org/wnet/black-in-latin-america/featured/haiti-the-dominican-republic-an-island-divided-watch-full-episode/165/">Haiti & the Dominican Republic</a></li>
+  <li><a href="http://www.youtube.com/watch?v=5Mr1USFY3mY">Haiti 1950 (le centre d'art)</a></li>
+  <li><a href="http://www.youtube.com/watch?v=bRVPoxDgbBo&feature=related">Port-au-Prince in the 1940's</a></li>
+  <li><a href="http://www.youtube.com/watch?v=xK1QZB-6iQM">Jean-Claude Duvalier (the last days)</a></li>
+  <li><a href="http://www.youtube.com/watch?v=UT-vOzsDsaU">Pope John Paul II visits Haiti (1983) [part I]</a></li>
+  <li><a href="http://www.youtube.com/watch?v=FCbW5YzyS2M">Pope John Paul II visits Haiti (1983) [part II]</a></li>
+  <li><a href="http://www.youtube.com/watch?v=iLxwh9KtppQ">Haiti 1969 ('Papa Doc' Duvalier interview) [part I]</a></li>
+  <li><a href="http://www.youtube.com/watch?v=msi_Ox4DQsA">Haiti 1969 ('Papa Doc' Duvalier interview) [part II]</a></li>
+
+  <li><a href="http://www.youtube.com/watch?v=5J5R8CRsLKE">Jean-Claude Duvalier Interview (1981) [part I]</a></li>
+  <li><a href="http://www.youtube.com/user/haitianhistory#p/u/13/XLRSFTFAXFQ">Jean-Claude Duvalier Interview (1981) [part II]</a></li>
+  <li><a href="http://www.youtube.com/watch?v=VyfGJMr4bX8">Katherine Dunham at home in Martissant, Haiti (1962)</a></li>
+  <li><a href="http://www.youtube.com/user/haitianhistory#p/u/15/2A90QCMCTdA">Haitian sports history (Who was Joe "ti Joe" Gaetjens?)</a></li>
+  <li><a href="http://www.youtube.com/user/haitianhistory#p/u/16/gWAqaQrsa7E">Toussaint Louverture</a></li>
+  <li><a href="http://www.youtube.com/user/haitianhistory#p/u/17/6DGCRO6jkiU">When the earth movoes (Haiti earthquake anniversary)</a></li>
+  <li><a href="http://www.youtube.com/user/haitianhistory#p/u/18/Tqv89NuGO94">From luxurious hotel to bidonville (Le Simbi Continental d'Haiti)</a></li>
+  <li><a href="http://www.youtube.com/user/haitianhistory#p/u/19/HjKSim7G-PY">Was Aristide kidnaped? (Charlie Rose March 1, 2004) [part I]</a></li>
+  <li><a href="http://www.youtube.com/user/haitianhistory#p/u/20/Y6Y75mCaJwY">Did the US break Haiti? (Charlie Rose March 1, 2004) [part II]</a></li>
+  <li><a href="http://www.youtube.com/user/haitianhistory#p/u/21/J3I2_yxIyz0">Arab Immigration to Haiti</a></li>
+  <li><a href=""></a></li>
+  <li><a href=""></a></li>
+  <li><a href=""></a></li>
+  <li><a href=""></a></li>
+  <li><a href=""></a></li>
+  <li><a href=""></a></li>
+  <li><a href=""></a></li>
+
 </ul><!-- Documentary -->
 
 <ul class="column" id="newspaper">
