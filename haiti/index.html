@@ -116,6 +116,7 @@
 				url = window.parent.location.href;
 				if (url.indexOf('translate') > -1) {
 					url = getURLParameter('u');
+					$('.translate').hide();
 				}
 				return 'http://translate.google.com/translate?u='+escape(url) +'&tl='+languageCode;
 			}
@@ -153,9 +154,8 @@
 	    <h2 style="padding:0;margin:0">Rebuild Haiti Project</h2>
 	  </li>
 	  <li>
-	    <a href="#" onclick="window.parent.location.href=translationURL('en')" class="small box">English</a>
-	    <a href="#" onclick="window.parent.location.href=translationURL('fr')" class="small box">Francais</a>
-	    <a href="#" onclick="window.parent.location.href=translationURL('ht')" class="small box">Kreyol</a>
+	    <a href="#" onclick="window.parent.location.href=translationURL('fr')" class="small box translate">Francais</a>
+	    <a href="#" onclick="window.parent.location.href=translationURL('ht')" class="small box translate">Kreyol</a>
 	  </li>
 	  <li>&nbsp;</li>
 	  <li><a href="#about" toggle="about">About Us</a></li>
