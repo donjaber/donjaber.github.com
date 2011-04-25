@@ -1,7 +1,11 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 	<head>
 		<title>Rebuild Haiti Project</title>
 		<link rel="icon" type="image/gif" href="flag_haiti.gif">
+		<meta http-equiv="Content-type" content="text/html; charset=iso-8859-1" />
+		<meta http-equiv="X-UA-Compatible" content="chrome=1">
+
 		<style>
 			body {
 				font-family:helvetica;color: #666666;
@@ -67,6 +71,8 @@
 		</style>
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script>
+		<script src="http://widgets.twimg.com/j/2/widget.js"></script>
+		
 		<script type="text/javascript">
 			var url = location.href;
 			
@@ -83,7 +89,7 @@
 
 				$('body').append($('<span id="sorted"></span>'));
 				$('a[toggle]').each(function(){
-					$(this).click(function(){$('#'+$(this).attr('toggle')).slideToggle('fast');});
+					$(this).click(function(){$('.column').hide();$('#'+$(this).attr('toggle')).toggle();});
 					$('#sorted').append($('#'+$(this).attr('toggle')).hide());
 				});
 				$('#main').append($('#sorted'));
@@ -95,12 +101,12 @@
 				}).blur(function(){
 					if(!$(this).val())$(this).addClass('fade').val(searchText);
 				});
-				$( ".column, .box" ).css({ top: getCookie("positionY"+$(this).attr('id'))*1, left: getCookie("positionX"+$(this).attr('id'))*1 })
+				/*$( ".column, .box" ).css({ top: getCookie("positionY"+$(this).attr('id'))*1, left: getCookie("positionX"+$(this).attr('id'))*1 })
 				.draggable({ stop: function (event, ui) {
 						setCookie("positionX"+$(this).attr('id'), ui.position.left, 100);
 						setCookie("positionY"+$(this).attr('id'), ui.position.top, 100);
 					} 
-				});
+				});*/
 			});
 			
 			function getURLParameter(name) {
@@ -151,6 +157,8 @@
 	    <a href="#" onclick="window.parent.location.href=translationURL('fr')" class="small box">Francais</a>
 	    <a href="#" onclick="window.parent.location.href=translationURL('ht')" class="small box">Kreyol</a>
 	  </li>
+	  <li>&nbsp;</li>
+	  <li><a href="#about" toggle="about">About Us</a></li>
 	</ul>
 	<ul class="box">
 	  <li>
@@ -162,12 +170,6 @@
 	  </li>
 	</ul>
 	<ul class="box">
-          <li>
-	    <h2>Index</h2>
-            <a href="#" onclick="$('.column').show()" class="small box">Show all</a>
-	    <a href="#" onclick="$('.column').hide()" class="small box">Hide all</a>
-          </li>
-	  <li>&nbsp;</li>
 	  <li><h3>Background</h3></li>
           <li><a href="#culture" toggle="culture">Culture</a></li>
           <li><a href="#history" toggle="history">History</a></li>
@@ -204,10 +206,61 @@
 	    </ul>
 	  </li>
 	</ul>
+
+<script>
+new TWTR.Widget({
+  version: 2,
+  type: 'search',
+  search: '#RHaitiP',
+  interval: 6000,
+  title: '',
+  subject: 'Rebuild Haiti Project #RHaitiP',
+  width: 250,
+  height: 100,
+  theme: {
+    shell: {
+      background: '#ddbbdd',
+      color: '#ffffff'
+    },
+    tweets: {
+      background: '#ffffff',
+      color: '#444444',
+      links: '#1985b5'
+    }
+  },
+  features: {
+    scrollbar: false,
+    loop: true,
+    live: true,
+    hashtags: true,
+    timestamp: true,
+    avatars: true,
+    toptweets: true,
+    behavior: 'default'
+  }
+}).render().start();
+</script>
+
 </td><!-- Index -->
 
 <td id="main">
 
+<ul class="column" id="about">
+  <li>
+    <h2>What</h2>
+    <p>
+      The "Rebuild Haiti Project" is a one page index of online information pertinent to Haiti.
+      <br/>The index packs a lot of information into a simple and organized interface allowing you to drill down the subjects which matter to you.
+      <br/>The included links of externally maintained websites are carefully selected to be as fresh, relevant, authoritative, complete, as possible.
+    </p>
+    <h2>Why</h2>
+    <p>
+      
+
+    </p>
+    <p>Enjoy learning more about the country you love, will someday visit or invest in!</p>
+  </li>
+</ul>
 
 <ul class="column" id="tourism" class="position:relative:top:10px;left:10px;">
   <li><h2><a href="http://www.haiticherie.ht/">Tourism</a></h2></li>
@@ -714,19 +767,10 @@
 
 <td id="rightpanel">
 
-<ul class="box">
-  <li><p>The "Rebuild Haiti Project" is a one page index of online information pertinent to Haiti.</p>
-    <ul>
-      <li>
-<p>The index packs a lot of information into a simple and organized interface allowing you to drill down the subjects which matter to you.</p>
-<p>The included links of externally maintained websites are carefully selected to be as fresh, relevant, authoritative, complete, as possible.</p>
-<p>Enjoy learning more about the country you love, will someday visit or invest in!</p>
-      </li>
-    </ul>
-  </li>
-</ul>
+<script type="text/javascript" src="http://output14.rssinclude.com/output?type=js&amp;id=252615&amp;hash=d6cc8cc4c8a9dce127ede6b609499a37"></script>
 
-<script src="http://widgets.twimg.com/j/2/widget.js"></script>
+
+
 <script>
 new TWTR.Widget({
   version: 2,
@@ -760,39 +804,7 @@ new TWTR.Widget({
   }
 }).render().start();
 </script>
-<script>
-new TWTR.Widget({
-  version: 2,
-  type: 'search',
-  search: '#RHaitiP',
-  interval: 6000,
-  title: '',
-  subject: 'Rebuild Haiti Project #RHaitiP',
-  width: 250,
-  height: 100,
-  theme: {
-    shell: {
-      background: '#ddbbdd',
-      color: '#ffffff'
-    },
-    tweets: {
-      background: '#ffffff',
-      color: '#444444',
-      links: '#1985b5'
-    }
-  },
-  features: {
-    scrollbar: false,
-    loop: true,
-    live: true,
-    hashtags: true,
-    timestamp: true,
-    avatars: true,
-    toptweets: true,
-    behavior: 'default'
-  }
-}).render().start();
-</script>
+
 </td><!-- Right Panel -->
 
 </tr><tr>
