@@ -8,7 +8,7 @@
 
 		<style>
 			body {
-				font-family:helvetica;color: #666666;
+				font-family:helvetica;color: #333333;
 
 				background: -moz-linear-gradient(top, #0000ff, #ff0000);
     				/* Chrome, Safari:*/
@@ -26,8 +26,11 @@
 				background-repeat: no-repeat;
 				background-position: center center;
 				background-attachment: fixed;
+				background-size: 25%;
 			}
 			a, a:link {text-decoration:none;}
+			a:link {color:#0000ff;}
+			a:visited {color:#1133ff;}
 			a.box {padding:2px;}
 			h1,h2,h3,h4,h5 {padding:0 0 0 0;margin:0;}
 			h2 {font-size:1.1em;}
@@ -36,9 +39,9 @@
 			.column, .box, button.more {
 				padding:10px;margin:1px;border:1px solid #fff;background:#fff;font-size:0.8em;
 
-				-moz-border-radius: 0.5em;
- 				-webkit-border-radius: 0.5em;
- 				border-radius: 0.5em 0.5em 0.5em 0.5em; /* for some reason you have to declare all corners in ie*/
+				0-moz-border-radius: 0.5em;
+ 				0-webkit-border-radius: 0.5em;
+ 				0border-radius: 0.5em 0.5em 0.5em 0.5em; /* for some reason you have to declare all corners in ie*/
 
 				background: -moz-linear-gradient(top, #ccccff, #ffcccc);
     				/* Chrome, Safari:*/
@@ -47,9 +50,14 @@
     				/* MSIE */
     				height:1%;/*IE Fix to give it hasLayout*/
     				filter: progid:DXImageTransform.Microsoft.Gradient(
-                		StartColorStr='#ccccff', EndColorStr='#ffcccc', GradientType=0);	
+                		StartColorStr='#ccccff', EndColorStr='#ffcccc', GradientType=0);
+
+
+				/*background: url(background2.png) no-repeat;
+				background-height: 100%;
+				border: 0px;*/
 			}
-			button.more {padding: 1px 6px;margin:0;height:1.4em;font-family:monospace;font-size:0.9em;float:right;}
+			button.more {padding: 1px 6px;margin:0;height:1.4em;font-family:monospace;font-size:10px;float:right;}
 			ul {list-style-type:none;padding:0;}
 			ul li ul {padding: 0 0 0 1em;}
 			.border {border:1px solid black;}
@@ -58,7 +66,7 @@
 			.small {font-size: 0.75em;}
 			.comment {font-size: 0.75em;}
 			.nowrap {white-space:nowrap;}
-			.fade {color:#aaa;}
+			.fade {color:#777777;}
 			.inline {display:inline;}
 			.floatleft {float:left;}
 
@@ -158,13 +166,13 @@
 	    <a href="#" onclick="window.parent.location.href=translationURL('ht')" class="small box translate">Kreyol</a>
 	  </li>
 	  <li>&nbsp;</li>
-	  <li><a href="#about" toggle="about">About Us</a></li>
+	  <li><a href="#about" toggle="about">About the project</a></li>
 	</ul>
 	<ul class="box">
 	  <li>
 	    <h2>Search <span class="center comment fade">Powered by Premye.ht</span></h2>
 	    <form id="search" action="http://www.premye.ht/index.php" method="get">
-	      <input type="text" name="query" id="query" size="20" value="">
+	      <input type="text" name="query" id="query" size="30" value="">
 	      <input type="hidden" name="search" value="1"> 
 	    </form>
 	  </li>
@@ -214,7 +222,7 @@ new TWTR.Widget({
   search: '#RHaitiP',
   interval: 6000,
   title: '',
-  subject: 'Rebuild Haiti Project #RHaitiP',
+  subject: '#RHaitiP',
   width: 250,
   height: 100,
   theme: {
@@ -255,9 +263,22 @@ new TWTR.Widget({
     </p>
     <h2>Why</h2>
     <p>
-      
-
+      The thought behind the page was to provide some sort of "Dashboard" of Haiti which could be used to better understand the country. 
+      An educated citizen is of better service to the country. An educated tourist is more attached to the country.
     </p>
+    <h2>How</h2>
+    <p>
+      There are several areas to this page. 
+      <ol>
+        <li>The <b>Background</b> index provides links to timeless information about Haiti.</li>
+        <li>The <b>Info</b> index provides links to current information about Haiti.</li>
+        <li>The <b>Multimedia</b> index provides links to different media allowing you to more deeply enjoy and learn what the country has to offer.</li>
+        <li>The <b>Page Administration</b> section provides a way to interact with the current page.</li>
+        <li>The right panel section provides a quick view of current news and what others are currently saying about Haiti.</li>
+        <li>The <b>Search</b> section provides a way to search the <b>.ht</b> (Haiti's own network) top level domain for more information.</li>
+      </ol>
+    </p>
+    <h2>Welcome!</h2>
     <p>Enjoy learning more about the country you love, will someday visit or invest in!</p>
   </li>
 </ul>
