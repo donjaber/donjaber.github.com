@@ -39,5 +39,6 @@ table td {vertical-align:top;margin-top:0;}
 #page {width:100%;}
 #utilities {white-space:nowrap;}
 #index {max-width:300px;}
-#rightpanel {width:250px;}
+#left {min-width:250px;max-width:300px;}
+#right {min-width:250px;max-width:300px;}
 #main {width:100%;}
