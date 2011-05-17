@@ -1,0 +1,942 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<title>Rebuild Haiti Project</title>
+		<link rel="icon" type="image/gif" href="flag_haiti.gif">
+		<meta http-equiv="Content-type" content="text/html; charset=iso-8859-1" />
+		<meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+		<style>
+			body {
+				font-family:helvetica;color: #333333;line-height:1.1em;
+
+				background: -moz-linear-gradient(top, #0000ff, #ff0000);
+    				/* Chrome, Safari:*/
+   				background: -webkit-gradient(linear,
+                		left top, left bottom, from(#0000ff), to(#ff0000));
+    				/* MSIE */
+    				height:1%;/*IE Fix to give it hasLayout*/
+    				filter: progid:DXImageTransform.Microsoft.Gradient(
+                		StartColorStr='#0000ff', EndColorStr='#ff0000', GradientType=0);
+
+				background-attachment: fixed;
+			}
+			#page {
+				background-image: url(coats-of-arms.png);
+				background-repeat: no-repeat;
+				background-position: center center;
+				/*background-attachment: fixed;*/
+				background-size: 25%;
+			}
+			a, a:link {text-decoration:none;}
+			a:link {color:#0000ff;}
+			a:visited {color:#1133ff;}
+			a.box {padding:2px;}
+			h1,h2,h3,h4,h5 {padding:0 0 0 0;margin:0;}
+			h2 {font-size:1.1em;}
+			h3 {font-size:1em;}
+			.column {float:left;height:1%;position:relative;display:none;} 
+			.column, .box, button.more {
+				padding:10px;margin:1px;border:1px solid #fff;background:#fff;font-size:0.8em;
+
+				0-moz-border-radius: 0.5em;
+ 				0-webkit-border-radius: 0.5em;
+ 				0border-radius: 0.5em 0.5em 0.5em 0.5em; /* for some reason you have to declare all corners in ie*/
+
+				background: -moz-linear-gradient(top, #ccccff, #ffcccc);
+    				/* Chrome, Safari:*/
+   				background: -webkit-gradient(linear,
+                		left top, left bottom, from(#ccccff), to(#ffcccc));
+    				/* MSIE */
+    				height:1%;/*IE Fix to give it hasLayout*/
+    				filter: progid:DXImageTransform.Microsoft.Gradient(
+                		StartColorStr='#ccccff', EndColorStr='#ffcccc', GradientType=0);
+
+
+				/*background: #ffdddd url(background.png) repeat;
+				background-height: 100%;
+				border: 0px;*/
+
+
+border: 1px solid #ccc;
+border-radius: 5px;
+background-image: -moz-linear-gradient(top, rgba(252,252,252,0.8), rgba(247,247,247,0.8) 3%, rgba(242,242,242,0.8) 12%, rgba(217,217,217,0.8) 90%, rgba(191,191,191,0.8));
+background-image: -webkit-gradient(linear, center top, center bottom, from(rgba(252,252,252,0.8)), to(rgba(191,191,191,0.8)), color-stop(3%, rgba(247,247,247,0.8)), color-stop(12%, rgba(242,242,242,0.8)), color-stop(90%, rgba(217,217,217,0.8)));
+box-shadow: 0 0 18px 1px rgba(179,179,179,0.75), inset 0 1px 0 white;
+			}
+			button.more {padding: 1px 6px;margin:0;height:1.4em;font-family:monospace;font-size:10px;float:right;}
+			ul {list-style-type:none;padding:0;}
+			ul li ul {padding: 0 0 0 1em;}
+			.border {border:1px solid black;}
+			.center {text-align:center;}
+			.clear {clear:both;}
+			.small {font-size: 0.75em;}
+			.comment {font-size: 0.75em;}
+			.nowrap {white-space:nowrap;}
+			.fade {color:#777777;}
+			.inline {display:inline;}
+			.floatleft {float:left;}
+
+			table td {vertical-align:top;margin-top:0;}
+			#page {width:100%;}
+			#utilities {white-space:nowrap;}
+			#index {max-width:300px;}
+			#rightpanel {width:250px;}
+			#main {width:100%;}
+		</style>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script>
+		<script src="http://widgets.twimg.com/j/2/widget.js"></script>
+		
+		<script type="text/javascript">
+			var url = location.href;
+			
+			$(function() {
+				$( "ul li ul" ).each(function(){
+					var childUL = $(this);
+					var plusMinus = '-';
+					if (!childUL.hasClass('show')){childUL.hide(); plusMinus = '+';}
+					childUL.parent().css({'padding-right':'3em'}).before($('<button class="more">'+plusMinus+'</button>').click(function(){
+						childUL.slideToggle('fast');
+						if('+'===$(this).html()){$(this).html('-');}else{$(this).html('+');}
+					}));
+				});
+
+				$('body').append($('<span id="sorted"></span>'));
+				$('a[toggle]').each(function(){
+					$(this).click(function(){$('.column').hide();$('#'+$(this).attr('toggle')).toggle();});
+					$('#sorted').append($('#'+$(this).attr('toggle')).hide());
+				});
+				$('#main').append($('#sorted'));
+				try {$('#'+location.href.split('#')[1]).show();}catch(err){}
+				
+				var searchText = 'Search and press Enter';
+				$('form#search input#query').addClass('fade').val(searchText).focus(function(){
+					if(searchText === $(this).val()){$(this).removeClass('fade').val('');}
+				}).blur(function(){
+					if(!$(this).val())$(this).addClass('fade').val(searchText);
+				});
+				/*$( ".column, .box" ).css({ top: getCookie("positionY"+$(this).attr('id'))*1, left: getCookie("positionX"+$(this).attr('id'))*1 })
+				.draggable({ stop: function (event, ui) {
+						setCookie("positionX"+$(this).attr('id'), ui.position.left, 100);
+						setCookie("positionY"+$(this).attr('id'), ui.position.top, 100);
+					} 
+				});*/
+			});
+			
+			function getURLParameter(name) {
+			    return unescape((RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]);
+			}
+			function translationURL(languageCode) {
+				url = window.parent.location.href;
+				if (url.indexOf('translate') > -1) {
+					url = getURLParameter('u');
+					$('.translate').hide();
+				}
+				return 'http://translate.google.com/translate?u='+escape(url) +'&tl='+languageCode;
+			}
+			function setCookie(c_name,value,exdays)
+			{
+				var exdate=new Date();
+				exdate.setDate(exdate.getDate() + exdays);
+				var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
+				document.cookie=c_name + "=" + c_value;
+			}
+			function getCookie(c_name)
+			{
+				var i,x,y,ARRcookies=document.cookie.split(";");
+				for (i=0;i<ARRcookies.length;i++)
+				{
+				  x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
+				  y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
+				  x=x.replace(/^\s+|\s+$/g,"");
+				  if (x==c_name)
+				  {
+				    return unescape(y);
+				  }
+				}
+			}
+		</script>
+	</head>
+	<body>
+
+<table id="page" cellspacing="0" cellpadding="0"><tr>
+
+  <td id="index">
+	<ul class="box center">
+	  <li>
+	    <img src="haitianwork.png" title="Haitian Maroon with hammer in place of a machete" style="width:150px"/>
+	    <h2 style="padding:0;margin:0">Rebuild Haiti Project</h2>
+	  </li>
+	  <li>
+	    <a href="#" onclick="window.parent.location.href=translationURL('fr')" class="small box translate">Francais</a>
+	    <a href="#" onclick="window.parent.location.href=translationURL('ht')" class="small box translate">Kreyol</a>
+	  </li>
+	  <li>&nbsp;</li>
+	  <li><a href="#about" toggle="about">About the project</a></li>
+	</ul>
+	<ul class="box">
+	  <li>
+	    <h2>Search <span class="center comment fade">Powered by Premye.ht</span></h2>
+	    <form id="search" action="http://www.premye.ht/index.php" method="get">
+	      <input type="text" name="query" id="query" size="30" value="">
+	      <input type="hidden" name="search" value="1"> 
+	    </form>
+	  </li>
+	</ul>
+	<ul class="box">
+	  <li><h3>Background</h3></li>
+          <li><a href="#culture" toggle="culture">Culture</a></li>
+          <li><a href="#history" toggle="history">History</a></li>
+          <li><a href="#geography" toggle="geography">Geography</a></li>
+          <li><a href="#government" toggle="government">Government</a></li>
+          <li><a href="#economy" toggle="economy">Economy</a></li>
+          <li><a href="#society" toggle="society">Society</a></li>
+          <li>&nbsp;</li>
+	  <li><h3>Info</h3></li>
+          <li><a href="#govlinks" toggle="govlinks">Government Institutions</a></li>
+          <li><a href="#ngolinks" toggle="ngolinks">NGOs and Private Sector</a></li>
+          <li><a href="#intorglinks" toggle="intorglinks">International Organizations</a></li>
+	  <li><a href="#newspaper" toggle="newspaper">Newspapers</a></li>
+          <li><a href="#tourism" toggle="tourism">Tourism</a></li>
+	  <li><a href="#other" toggle="other">Other</a></li>
+	  <li>&nbsp;</li>
+	  <li><h3>Multimedia</h3></li>
+	  <li><a href="#book" toggle="book">Books</a></li>
+	  <li><a href="#documentary" toggle="documentary">Documentaries</a></li>
+	  <li><a href="#music" toggle="music">Music</a></li>
+	  <li><a href="#photo" toggle="photo">Photos</a></li>
+	  <li><a href="#radio" toggle="radio">Radio</a></li>
+          <li><a href="#video" toggle="video">Videos</a></li>
+	</ul>
+	
+
+	<ul class="box">
+	  <li><h3>Page Administration</h3></li>
+	  <li>
+	    <a href="https://github.com/donjaber/rebuildhaitiproject/commits/gh-pages/">Page Updates</a> 
+	  | <a href="https://github.com/donjaber/rebuildhaitiproject/commits/gh-pages.atom">RSS feed</a>
+	  </li>
+	  <li><a href="https://github.com/donjaber/rebuildhaitiproject/issues">Issues & Requests</a></li>
+	  <li>Have a suggestion?
+	    <ul>
+	      <li>We are listening on Twitter.<br/>Be sure to include #RHaitiP hashtag!</li>
+	    </ul>
+	  </li>
+	</ul>
+
+<script>
+new TWTR.Widget({
+  version: 2,
+  type: 'search',
+  search: '#RHaitiP',
+  interval: 6000,
+  title: '',
+  subject: '#RHaitiP',
+  width: 250,
+  height: 200,
+  theme: {
+    shell: {
+      background: '#ddbbdd',
+      color: '#ffffff'
+    },
+    tweets: {
+      background: '#ffffff',
+      color: '#444444',
+      links: '#1985b5'
+    }
+  },
+  features: {
+    scrollbar: false,
+    loop: true,
+    live: false,
+    hashtags: true,
+    timestamp: true,
+    avatars: true,
+    toptweets: true,
+    behavior: 'default'
+  }
+}).render().start();
+</script>
+
+</td><!-- Index -->
+
+<td id="main">
+
+<ul class="column" id="about">
+  <li>
+    <h2>What</h2>
+    <p>
+      The "Rebuild Haiti Project" is a one page index of online information pertinent to Haiti.
+      <br/>The index packs a lot of information into a simple and organized interface allowing you to drill down the subjects which matter to you.
+      <br/>The included links of externally maintained websites are carefully selected to be as fresh, relevant, authoritative, complete, as possible.
+    </p>
+    <h2>Why</h2>
+    <p>
+      The thought behind the page was to provide some sort of "Dashboard" of Haiti which could be used to better understand the country. 
+      An educated citizen is of better service to the country. An educated tourist is more attached to the country.
+    </p>
+    <h2>How</h2>
+    <p>
+      There are several areas to this page. 
+      <ol>
+        <li>The <b>Background</b> index provides links to timeless information about Haiti.</li>
+        <li>The <b>Info</b> index provides links to current information about Haiti.</li>
+        <li>The <b>Multimedia</b> index provides links to different media allowing you to more deeply enjoy and learn what the country has to offer.</li>
+        <li>The <b>Page Administration</b> section provides a way to interact with the current page.</li>
+        <li>The right panel section provides a quick view of current news and what others are currently saying about Haiti.</li>
+        <li>The <b>Search</b> section provides a way to search the <b>.ht</b> (Haiti's own network) top level domain for more information.</li>
+      </ol>
+    </p>
+    <h2>Welcome!</h2>
+    <p>Enjoy learning more about the country you love, will someday visit or invest in!</p>
+  </li>
+</ul>
+
+<ul class="column" id="tourism" class="position:relative:top:10px;left:10px;">
+  <li><h2><a href="http://www.haiticherie.ht/">Tourism</a></h2></li>
+  <li><a href="http://www.haiticherie.ht/PDF/Brochure_Magic_Haiti.pdf">Brochure</a></li>
+  <li>&nbsp;</li>
+  <li>-Destinations & Tours-</li>
+  <li><a href="http://www.haiticherie.ht/EN/destinations/sites_historiques.php">Historical sites</a></li>
+  <li><a href="http://www.haiticherie.ht/EN/destinations/mer_et_plages.php">Oceans & Beaches</a></li>
+  <li><a href="http://www.haiticherie.ht/EN/destinations/villes_principales.php">Major cities</a></li>
+  <li><a href="http://www.haiticherie.ht/EN/destinations/montagnes.php">Mountains</a></li>
+  <li>&nbsp;</li>
+  <li>-Activities-</li>
+  <li><a href="http://www.haiticherie.ht/EN/activites/festivals.php">Carnaval & Rara</a></li>
+  <li><a href="http://www.haiticherie.ht/EN/activites/festivals.php">Festivals & Patron Saints days</a></li>
+  <li><a href="http://www.haiticherie.ht/EN/activites/congres.php">Congress & business meetings</a></li>
+  <li><a href="http://www.haiticherie.ht/EN/activites/events.php">Events</a></li>
+  <li><a href="http://www.haiticherie.ht/EN/activites/sante_et_spa.php">Spa & health</a></li>
+  <li>&nbsp;</li>
+  <li>-Art & Culture-</li>
+  <li><a href="http://www.haiticherie.ht/EN/culture/galeries_dart.php">Museum & art galleries</a></li>
+  <li><a href="http://www.haiticherie.ht/EN/culture/gastronomie.php">Gastronomy</a></li>
+  <li><a href="http://www.haiticherie.ht/EN/culture/spritualites_et_religion.php">Religion & spirituality</a></li>
+  <li><a href="http://www.haiticherie.ht/EN/culture/musiques.php">Music</a></li>
+  <li>&nbsp;</li>
+  <li>-Practical Information-</li>
+  <li><a href="http://www.haiticherie.ht/EN/infos/hebergement.php">Accomodations</a></li>
+  <li><a href="http://www.haiticherie.ht/EN/infos/restauration.php">Food</a></li>
+  <li><a href="http://www.haiticherie.ht/EN/infos/transports.php">Transportation</a></li>
+  <li><a href="http://www.haiticherie.ht/EN/infos/urgences.php">Emergency Numbers</a></li>
+  <li><a href="http://www.haiticherie.ht/EN/presentation/annuaire_membres.php">Businesses</a></li>
+</ul><!-- Tourism -->
+
+<ul class="column" id="govlinks">
+  <li><h2><a href="http://haiti.org/index.php?option=com_weblinks&view=category&id=58%3Agovernment-and-state-institutions&Itemid=92">Government links</a></h2></li>
+  <li><a href="http://www.agriculture.gouv.ht/">Agriculture & natural resources</a></li>
+  <li><a href="http://www.lnbtp.gouv.ht/">Building & public works</a></li>
+  <li><a href="http://www.brh.net/">Central bank</a></li>
+  <li><a href="http://www.chambredesdeputes.parlementhaitien.ht/">Chamber of Deputies</a></li>
+  <li><a href="http://www.mci.gouv.ht/">Commerce and Industry</a></li>
+  <li><a href="http://www.cnc.coop/">Coucil of cooperatives</a></li>
+  <li><a href="http://www.douane.gouv.ht/">Customs</a></li>
+  <li><a href="http://www.bureaudegestion.gouv.ht/">Development aid program management</a></li>
+  <li><a href="http://www.mefhaiti.gouv.ht/">Economy & finance</a></li>
+  <li><a href="http://www.eduhaiti.gouv.ht/">Education & vocational training</a></li>
+  <li><a href="http://www.mae.gouv.ht/">Foreign affairs & cults</a></li>
+  <li><a href="http://www.mhave.gouv.ht/">Haitians living abroad</a></li>
+  <li><a href="http://www.oni.gouv.ht/">Identification office</a></li>
+  <li><a href="http://www.incah-haiti.gouv.ht/">Institute of coffee</a></li>
+  <li><a href="http://www.seiph.gouv.ht/">Integration of people with disabilities</a></li>
+  <li><a href="http://www.bme.gouv.ht/">Mines & energy</a></li>
+  <li><a href="http://www.anhhaiti.org/">National archives</a></li>
+  <li><a href="http://www.bnconline.com/">National bank of credit</a></li>
+  <li><a href="www.mpce.gouv.ht/liens.htm">Planning & foreign aid</a></li>
+  <li><a href="http://www.apn.gouv.ht/">Port authority</a></li>
+  <li><a href="http://www.primature.gouv.ht/">Prime Minister</a></li>
+  <li><a href="http://www.cnmp.gouv.ht/">Public markets</a></li>
+  <li><a href="http://www.mtptc.gouv.ht/">Public works, transport & communications</a></li>
+  <li><a href="http://www.lesenat.parlementhaitien.ht/">Senate</a></li>
+  <li><a href="http://www.ueh.edu.ht/">State University of Haiti</a></li>
+  <li><a href="http://www.ihsi.ht/">Statistics & informatics</a></li>
+  <li><a href="http://www.conatel.gouv.ht/">Telecommunications</a></li>
+  <li><a href="http://www.tnh.ht/">Television</a></li>
+</ul><!-- Government links -->
+
+<ul class="column" id="ngolinks">
+  <li><h2><a href="http://haiti.org/index.php?option=com_weblinks&view=category&id=59%3Acivil-society-ngos-and-private-sector&Itemid=92">NGOs and Private Sector links</a></h2></li>
+  <li><a href="http://www.haiticherie.ht/">Association Touristique d'Haiti</a></li>
+  <li><a href="http://www.buildhaiti.com/buildhaiti/">Build Haiti</a></li>
+  <li><a href="http://www.chambrefrancohaitienne.com/">Chambre de Commerce Franco-Haitienne</a></li>
+  <li><a href="http://www.eglisehaiti.org/">Conference Episcopale d'Haiti</a></li>
+  <li><a href="http://www.douyon.com/">Douyon.com</a></li>
+  <li><a href="http://www.haitipolicy.org/">Haiti Democracy Project</a></li>
+  <li><a href="http://www.haitiepiscopalconnection.org/">Haiti Episcopal Connection</a></li>
+  <li><a href="http://www.haitiguesthouse.com/">Haiti Guest House</a></li>
+  <li><a href="http://www.haitilumiere.org/">Haiti Lumiere de Demain</a></li>
+  <li><a href="http://www.ngohaiti.com/">Haiti NGO Connection</a></li>
+  <li><a href="http://www.hamanetwork.org/index2.htm">Haitian American Martial Arts Network</a></li>
+  <li><a href="http://uhelp.net/">Haitian Education and Leadership Program-HELP</a></li>
+  <li><a href="http://www.idejen.edc.org/">Haitian Out-of-School Youth Livelyhood Initiative</a></li>
+  <li><a href="http://www.ile-a-vache.com/">Ile-a-Vache Haiti</a></li>
+  <li><a href="http://www.mercyoutreachministry.org/">Mercy Outreach Ministry</a></li>
+  <li><a href="http://www.icafair.com/">Third Annual International Carribean Art Fair (ICAFair)</a></li>
+</ul><!-- NGO links -->
+
+<ul class="column" id="intorglinks">
+  <li><h2><a href="http://haiti.org/index.php?option=com_weblinks&view=category&id=60%3Ainternational-organizations&Itemid=92">International Organization links</a></h2></li>
+  <li><a href="http://www.oas.org/en/default.asp">Organization of American States</a></li>
+  <li><a href="http://www.un.org/">United Nations</a></li>
+  <li><a href="http://www.unicef.org/">United Nations Children's Fund</a></li>
+  <li><a href="http://www.unctad.org/Templates/StartPage.asp?intItemID=2068">United Nations Conference on Trade and Development</a></li>
+  <li><a href="http://www.un.org/en/peacekeeping/missions/minustah/">United Nations Stabilization Mission in Haiti</a></li>
+  <li><a href="http://haiti.usembassy.gov/">U.S. Embassy Port-au-Prince, Haiti</a></li>
+</ul><!-- International Organizations-->
+
+<ul class="column" id="government">
+  <li><h2><a href="http://en.wikipedia.org/wiki/Politics_of_Haiti">Government</a></h2></li>
+  <li><a href="http://en.wikipedia.org/wiki/Constitution_of_Haiti">Constitution</a></li>
+  <li>&nbsp;</li>
+  <li>-Executive branch-</li>
+  <li><a href="http://en.wikipedia.org/wiki/President_of_Haiti">President</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/List_of_Prime_Ministers_of_Haiti">List of Prime Ministers</a></li>
+  <li>&nbsp;</li>
+  <li>-Legislative branch-</li>
+  <li><a href="http://en.wikipedia.org/wiki/Parliament_of_Haiti">Parliament</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/List_of_current_members_of_the_National_Assembly_of_Haiti">National Assembly</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Senate_of_Haiti">Senate</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Chamber_of_Deputies_of_Haiti">Chamber of Deputies</a></li>
+  <li>&nbsp;</li>
+  <li>-Judicial branch-</li>
+  <li><a href="http://en.wikipedia.org/wiki/Supreme_Court_of_Haiti">Supreme Court</a></li>
+  <li>&nbsp;</li>
+  <li>-Administrative divisions-</li>
+  <li><a href="http://en.wikipedia.org/wiki/Departments_of_Haiti">Departments</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Arrondissements_of_Haiti">Arrondissements</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/List_of_communes_of_Haiti">Communes</a></li>
+  <li>&nbsp;</li>
+  <li>-Forces-</li>
+  <li><a href="http://en.wikipedia.org/wiki/Law_enforcement_in_Haiti">Law enforcement</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Military_of_Haiti">Military</a></li>
+  <li>&nbsp;</li>
+  <li>-Other-</li>
+  <li><a href="http://en.wikipedia.org/wiki/Elections_in_Haiti">Elections</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Foreign_relations_of_Haiti">Foreign relations</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/List_of_political_parties_in_Haiti">List of political parties</a></li>
+</ul><!-- Government -->
+
+<ul class="column" id="culture">
+  <li><h2><a href="http://en.wikipedia.org/wiki/Culture_of_Haiti">Culture</a></h2></li>
+  <li>-General-</li>
+  <li>
+    <a href="http://en.wikipedia.org/wiki/Flag_of_Haiti">Flag</a>
+  | <a href="http://en.wikipedia.org/wiki/Coat_of_arms_of_Haiti">Crest</a> 
+  </li>
+  <li><a href="http://haiti.org/index.php?option=com_content&view=article&id=56:hymne-national-qla-dessalinienneq&catid=46&Itemid=88">National Anthem</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Haitian_Creole_language">Haitian Creole</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Public_holidays_in_Haiti">Holidays</a></li>
+  <li><a href="http://en.wikiquote.org/wiki/Haitian_proverbs">Proverbs</a></li>
+  <li>&nbsp;</li>
+  <li>-Categories-</li>
+  <li><a href="http://en.wikipedia.org/wiki/Haitian_art">Art</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Cinema_of_Haiti">Cinema</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Haitian_cuisine">Cuisine</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Haitian_literature">Literature</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Music_of_Haiti">Music</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Haitian_mythology">Mythology</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Religion_in_Haiti">Religion</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Category:Sport_in_Haiti">Sports</a></li>
+  <li>&nbsp;</li>
+  <li>-Other-</li>
+  <li><a href="http://en.wikipedia.org/wiki/List_of_people_on_stamps_of_Haiti">List of people on stamps</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/National_Museum_of_Haiti">National Museum</a></li>
+</ul><!-- Culture -->
+
+<ul class="column" id="history">
+  <li><h2><a href="http://en.wikipedia.org/wiki/History_of_Haiti">History</a></h2></li>
+  <li>-Chronology-</li>
+  <li><a href="http://en.wikipedia.org/wiki/Saint-Domingue">Saint-Domingue</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Haitian_Revolution">Haitian Revolution</a></li>
+  <li><a href="http://en.wikipedia.org/w/index.php?title=History_of_Haiti_(1804-1843)&action=edit&redlink=1">Imperial era (1804-1843)</a></li>
+  <li><a href="http://en.wikipedia.org/w/index.php?title=History_of_Haiti_(1843-1915)&action=edit&redlink=1">Republican era (1843-1915)</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/History_of_Haiti_(1915%E2%80%931986)">US occupation and Duvalier regime (1915-1986)</a></li>
+  <li><a href="http://en.wikipedia.org/w/index.php?title=History_of_Haiti_(1986-present)&action=edit&redlink=1">Aristide era and 2010 earthquake (1986-present)</a></li>
+  <li>&nbsp;</li>
+  <li>-Topics-</li>
+  <li><a href="#">Historical Documents</a>
+    <ul>
+      <li><a href="http://www.nationalarchives.gov.uk/dol/images/examples/haiti/0003.pdf">Declaration of Indepedence</a></li>
+      <li><a href="http://en.wikipedia.org/wiki/Constitution_of_Haiti">Consitutions</a>
+        <ul>
+          <li><a href="http://en.wikisource.org/wiki/Constitution_of_Saint-Domingue">Constitution of Saint-Domingue 1801</a></li>
+          <li><a href="http://en.wikisource.org/wiki/Constitution_of_Hayti_(1805)">Constitution of Hayti 1805</a></li>
+          <li><a href="http://www.webster.edu/~corbetre/haiti/history/earlyhaiti/1807-const.htm">Constitution of 1807</a></li>
+          <li><a href="http://www.webster.edu/~corbetre/haiti/history/earlyhaiti/1811-const.htm">Constitution of 1811</a></li>
+          <li><a href="http://en.wikisource.org/wiki/Revision_of_the_Haitian_Constitution_of_1806">Revision of Constitution of 1806 (1816)</a></li>
+          <li><a href="http://en.wikipedia.org/wiki/1843_Constitution_of_Haiti">Constitution of 1843</a></li>
+          <li>Constitution of 1816</li>
+          <li>Constitution of 1849</li>
+          <li>Constitution of 1874</li>
+          <li>Constitution of 1879</li>
+          <li>Constitution of 1889</li>
+          <li>Constitution of 1902</li>
+          <li>Constitution of 1918</li>
+          <li>Constitution of 1932</li>
+          <li>Constitution of 1935</li>
+          <li>Constitution of 1932</li>
+          <li>Constitution of 1946</li>
+          <li>Constitution of 1950</li>
+          <li>Constitution of 1957</li>
+          <li>Constitution of 1964</li>
+          <li>Constitution of 1971</li>
+          <li>Constitution of 1983</li>
+          <li><a href="http://en.wikisource.org/wiki/Constitution_of_Ha%C3%AFti">Constitution of Haiti 1987</a></li>
+          <li><a href="http://haiti.org/images/stories/pdf/rsolution_amendement.pdf">Constitutional Amendment of 2009</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="http://en.wikipedia.org/wiki/Timeline_of_Haitian_history">Timeline of Haitian history</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Military_history_of_Haiti">Military history</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/United_States_occupation_of_Haiti">United States occupation of Haiti</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/2004_Haitian_rebellion">2004 Haitian rebellion</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/2010_Haiti_earthquake">2010 Earthquake</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/2010_Haiti_cholera_outbreak">Cholera outbreak</a></li>
+</ul><!-- History -->
+
+<ul class="column" id="geography">
+  <li><h2><a href="http://en.wikipedia.org/wiki/Geography_of_Haiti">Geography</a></h2></li>
+  <li><a href="http://en.wikipedia.org/wiki/Subdivisions_of_Haiti">Administrative divisions</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/List_of_cities_in_Haiti">Cities</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Deforestation_in_Haiti">Deforestation</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Environment_of_Haiti">Environment</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/List_of_islands_of_Haiti">Islands</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/List_of_national_parks_of_Haiti">National parks</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/List_of_rivers_of_Haiti">Rivers</a></li>
+</ul><!-- Geography -->
+
+<ul class="column" id="economy">
+  <li><h2><a href="http://en.wikipedia.org/wiki/Economy_of_Haiti">Economy</a></h2></li>
+  <li>
+    <a href="http://en.wikipedia.org/wiki/Haitian_gourde">Currency</a>
+  | <a href="http://www.brh.net/bils.htm">Current Banknotes</a>
+  | <a href="http://www.banknotes.com/ht.htm">Banknotes</a></li>
+  </li>
+  <li><a href="http://en.wikipedia.org/wiki/Agriculture_in_Haiti">Agriculture</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/List_of_airports_in_Haiti">Airports</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Bank_of_the_Republic_of_Haiti">Central bank</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Communications_in_Haiti">Communications</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Transport_in_Haiti">Transport</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Tourism_in_Haiti">Tourism</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Media_of_Haiti">Media</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Water_supply_and_sanitation_in_Haiti">Water supply & sanitation</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Foreign_aid_to_Haiti">Foreign aid</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/External_debt_of_Haiti">External Debt</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/List_of_companies_of_Haiti">List of companies</a></li>
+</ul><!-- Economy -->
+  
+<ul class="column" id="society">
+  <li><h2>Society</h2></li>
+  <li><a href="http://en.wikipedia.org/wiki/Crime_in_Haiti">Crime</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Demographics_of_Haiti">Demographics</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Haitian_diaspora">Diaspora</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Education_in_Haiti">Education</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Health_in_Haiti">Health</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Human_rights_in_Haiti">Human rights</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/List_of_Haitians">Notable People</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Religion_in_Haiti">Religion</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Social_class_in_Haiti">Social class</a></li>
+</ul><!-- Society -->
+  
+<ul class="column" id="other">
+  <li><h2>Other links</h2></li>
+  <li><a href="http://www.pajla.com/">Yellow Pages</a></li>
+  <li><a href="http://www.doingbusiness.org/data/exploreeconomies/haiti">Doing business</a></li>
+  <li><a href="http://embassy.goabroad.com/embassies-in/haiti">Embassies & Consulates</a>
+    <ul>
+      <li><a href="http://embassy.goabroad.com/embassies-in/haiti#2921">Argentina</a></li>
+      <li><a href="http://embassy.goabroad.com/embassies-in/haiti#17498">Austria</a></li>
+      <li><a href="http://embassy.goabroad.com/embassies-in/haiti#22640">Bahamas</a></li>
+      <li><a href="http://embassy.goabroad.com/embassies-in/haiti#19960">Barbados</a></li>
+      <li><a href="http://embassy.goabroad.com/embassies-in/haiti#20892">Belgium</a></li>
+      <li><a href="http://embassy.goabroad.com/embassies-in/haiti#19849">Belize</a></li>
+      <li><a href="http://embassy.goabroad.com/embassies-in/haiti#13911">Brazil</a></li>
+      <li><a href="http://www.port-au-prince.gc.ca/">Canada</a></li>
+      <li><a href="http://embassy.goabroad.com/embassies-in/haiti#12837">Chile</a></li>
+      <li><a href="http://embassy.goabroad.com/embassies-in/haiti#1218">Columbia</a></li>
+      <li><a href="http://embassy.goabroad.com/embassies-in/haiti#16021">Costa Rica</a></li>
+      <li><a href="http://embassy.goabroad.com/embassies-in/haiti#2945">Cuba</a></li>
+      <li><a href="http://embassy.goabroad.com/embassies-in/haiti#8595">Czech Republic</a></li>
+      <li><a href="http://embassy.goabroad.com/embassies-in/haiti#25367">Dominican Republic</a></li>
+      <li><a href="http://embassy.goabroad.com/embassies-in/haiti#23569">Ecuador</a></li>
+      <li><a href="http://embassy.goabroad.com/embassies-in/haiti#16188">Finland</a></li>
+      <li><a href="http://www.ambafrance-ht.org/">France</a></li>
+      <li><a href="http://embassy.goabroad.com/embassies-in/haiti#21055">Germany</a></li>
+      <li><a href="http://embassy.goabroad.com/embassies-in/haiti#13755">Greenland</a></li>
+      <li><a href="http://embassy.goabroad.com/embassies-in/haiti#21768">Guatemala</a></li>
+      <!--<li><a href="#">Italy</a></li>-->
+      <li><a href="http://embassy.goabroad.com/embassies-in/haiti#21695">Jamaica</a></li>
+      <!--<li><a href="#">Japan</a></li>-->
+      <li><a href="http://embassy.goabroad.com/embassies-in/haiti#10253">Mexico</a></li>
+      <li><a href="http://embassy.goabroad.com/embassies-in/haiti#6168">Netherlands</a></li>
+      <li><a href="http://embassy.goabroad.com/embassies-in/haiti#5456">Philippines</a></li>
+      <li><a href="http://embassy.goabroad.com/embassies-in/haiti#25091">Poland</a></li>
+      <li><a href="http://embassy.goabroad.com/embassies-in/haiti#14050">Spain</a></li>
+      <!--<li><a href="#">South Korea</a></li>-->
+      <li><a href="http://embassy.goabroad.com/embassies-in/haiti#6569">Taiwan</a></li>
+      <li><a href="http://portauprince.usembassy.gov/">United States</a></li>
+      <li><a href="http://embassy.goabroad.com/embassies-in/haiti#12293">Uruguay</a></li>
+      <!--<li><a href="#">Vatican</a></li>-->
+      <li><a href="http://embassy.goabroad.com/embassies-in/haiti#12819">Venezuela</a></li>
+    </ul>
+  </li>
+  <li><a href="http://www.quora.com/haiti">Questions & Answers</a></li>
+</ul><!-- Other -->
+  
+<ul class="column" id="music">
+  <li><h2>Music</h2></li>
+  <li><a href="http://listen.grooveshark.com/#/artist/Sweet+Micky/958396?src=5">Sweet Micky</a>
+    <ul>
+      <li><a href="http://listen.grooveshark.com/#/album/Gnb/4724479?src=5">GNB</a></li>
+      <li><a href="http://listen.grooveshark.com/#/album/Micky+Ap+Trip/4724655?src=5">Micky Ap Trip</a></li>
+      <li><a href="http://listen.grooveshark.com/#/album/New+Repertoire/4724645?src=5">New Repertoire</a></li>
+      <li><a href="http://listen.grooveshark.com/#/album/Pa+Manyen+/4724640?src=5">Pa Manyen</a></li>
+      <li><a href="http://listen.grooveshark.com/#/album/Rale+Kow+La/4724633?src=5">Rale Kow La</a></li>
+      <li><a href="http://listen.grooveshark.com/#/album/Sisisi+Live+Version/4724582?src=5">SiSiSi Live Version</a></li>
+      <li><a href="http://listen.grooveshark.com/#/album/The+Sweetest/4724571?src=5">The Sweetest</a></li>
+      <li><a href="http://listen.grooveshark.com/#/album/Totot/4724544?src=5">Totot</a></li>
+      <li><a href="http://listen.grooveshark.com/#/album/Tout+Ce+Mately/4724528?src=5">Tout Ce Mately</a></li>
+      <li><a href="http://listen.grooveshark.com/#/album/Woule+Woule/4724511?src=5">Woule Woule</a></li>
+    </ul>
+  </li>
+  <li><a href="http://listen.grooveshark.com/#/search?q=carimi">Carimi</a>
+    <ul>
+      <li><a href="http://listen.grooveshark.com/#/album/Buzz/4380806?src=5">Buzz</a></li>
+      <li><a href="http://listen.grooveshark.com/#/album/Nasty+Biznis/4724401?src=5">Nasty Biznis</a></li>
+      <li><a href="http://listen.grooveshark.com/#/album/Bang+Bang/4724414?src=5">Bang Bang</a></li>
+    </ul>
+  </li>
+  <li><a href="http://listen.grooveshark.com/#/artist/Wyclef+Jean/649?src=5">Wyclef Jean</a>
+    <ul>
+      <li><a href="http://listen.grooveshark.com/#/album/Masquerade/126876?src=5">Masquerade</a></li>
+      <li><a href="http://listen.grooveshark.com/#/album/The+Preacher+s+Son/126904?src=5">The Preacher's Son</a></li>
+      <li><a href="http://listen.grooveshark.com/#/album/New+Repertoire/4724645?src=5">New Repertoire</a></li>
+    </ul>
+  </li>
+</ul><!-- Music -->
+
+<ul class="column" id="book">
+  <li><h2><a href="http://www.haitianbookcentre.com/">Books</a></h2></li>
+  <li><a href="http://www.amazon.com/Black-Jacobins-Toussaint-LOuverture-Revolution/dp/0679724672">The Black Jacobins - C.L.R. James</a></li>
+  <li><a href="http://www.amazon.com/Fort-Dimanche-Dungeon-of-Death/dp/0967589509/">Fort-Dimanche Dungeon of Death - Patrick Lemoine</a></li>
+
+</ul><!-- Book -->
+
+<ul class="column" id="photo">
+  <li>
+    <object width="700" height="525"> <param name="flashvars" value="offsite=true&lang=en-us&page_show_url=%2Fsearch%2Fshow%2F%3Fq%3Dhaiti%2Bbeauty&page_show_back_url=%2Fsearch%2F%3Fq%3Dhaiti%2Bbeauty&method=flickr.photos.search&api_params_str=&api_text=haiti+beauty&api_tag_mode=bool&api_media=all&api_sort=relevance&jump_to=&start_index=0"></param> <param name="movie" value="http://www.flickr.com/apps/slideshow/show.swf?v=71649"></param> <param name="allowFullScreen" value="true"></param><embed type="application/x-shockwave-flash" src="http://www.flickr.com/apps/slideshow/show.swf?v=71649" allowFullScreen="true" flashvars="offsite=true&lang=en-us&page_show_url=%2Fsearch%2Fshow%2F%3Fq%3Dhaiti%2Bbeauty&page_show_back_url=%2Fsearch%2F%3Fq%3Dhaiti%2Bbeauty&method=flickr.photos.search&api_params_str=&api_text=haiti+beauty&api_tag_mode=bool&api_media=all&api_sort=relevance&jump_to=&start_index=0" width="700" height="525"></embed></object>
+  </li>
+</ul><!-- Photo -->
+
+<ul class="column" id="video">
+  <li><h2>Video</h2></li>
+  <li><object width="700" height="525"><param name="movie" value="http://www.youtube.com/p/00E49251D6AC5D0E?hl=en_US&fs=1"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/p/00E49251D6AC5D0E?hl=en_US&fs=1" type="application/x-shockwave-flash" width="700" height="525" allowscriptaccess="always" allowfullscreen="true"></embed></object></li>
+</ul><!-- Video -->
+
+<ul class="column" id="documentary">
+  <li><h2>Documentaries</h2></li>
+  <li>Earth History
+    <ul>
+      <li><a href="http://www.khanacademy.org/v/earth-formation?p=Cosmology%20and%20Astronomy">Earth formation</a></li>
+      <li><a href="http://www.khanacademy.org/video/beginnings-of-life?playlist=Cosmology%20and%20Astronomy">Beginning of life</a></li>
+      <li><a href="http://www.khanacademy.org/video/ozone-layer-and-eukaryotes-show-up-in-the-proterozoic-eon?playlist=Cosmology%20and%20Astronomy">Proterozoic eon</a></li>
+      <li><a href="http://www.khanacademy.org/video/biodiversity-flourishes-in-phanerozoic-eon?playlist=Cosmology%20and%20Astronomy">Phanerozoic eon</a></li>
+    </ul>
+  </li>
+  <li>Human migration history
+    <ul>
+      <li><a href="http://www.youtube.com/watch?v=OV6A8oGtPc4&feature=related">Journey of Man: A Genetic Odyssey [part I]</a></li>
+      <li><a href="http://www.youtube.com/watch?v=ybji0axp6s0&feature=related">Journey of Man: A Genetic Odyssey [part II]</a></li>
+      <li><a href="http://www.youtube.com/watch?v=M25Ez4HW104&feature=related">Journey of Man: A Genetic Odyssey [part III]</a></li>
+      <li><a href="http://www.youtube.com/watch?v=BA3aINMIWMw&feature=related">Journey of Man: A Genetic Odyssey [part IV]</a></li>
+      <li><a href="http://www.youtube.com/watch?v=0m2-RwYXkWg&feature=related">Journey of Man: A Genetic Odyssey [part V]</a></li>
+      <li><a href="http://www.youtube.com/watch?v=N0QDrODnN6g&feature=related">Journey of Man: A Genetic Odyssey [part VI]</a></li>
+      <li><a href="http://www.youtube.com/watch?v=EMzaQhqHYnM&feature=related">Journey of Man: A Genetic Odyssey [part VII]</a></li>
+      <li><a href="http://www.youtube.com/watch?v=xhZ7zaT5hvU&feature=related">Journey of Man: A Genetic Odyssey [part VIII]</a></li>
+      <li><a href="http://www.youtube.com/watch?v=QV3Ws7pyJUI&feature=related">Journey of Man: A Genetic Odyssey [part IX]</a></li>
+      <li><a href="http://www.youtube.com/watch?v=nNlvzhfQex0&feature=related">Journey of Man: A Genetic Odyssey [part X]</a></li>
+      <li><a href="http://www.youtube.com/watch?v=8KzroCQVDoI&feature=related">Journey of Man: A Genetic Odyssey [part XI]</a></li>
+      <li><a href="http://www.youtube.com/watch?v=jl-bnnES42U&feature=related">Journey of Man: A Genetic Odyssey [part XII]</a></li>
+      <li><a href="http://www.youtube.com/watch?v=AT6XsVnuz6o&feature=related">Journey of Man: A Genetic Odyssey [part XIII]</a></li>
+      <li><a href="http://www.youtube.com/watch?v=jOfEAbNiKFM">Christopher Columbus Arrival - 500 Nations - Native American - [Part I]</a></li>
+      <li><a href="http://www.youtube.com/watch?v=BGuNpPt_tfw&feature=related">Christopher Columbus Arrival - 500 Nations - Native American - [Part II]</a></li>
+    </ul>
+  </li>
+  <li>...</li>
+  <li>French Revolution
+    <ul>
+      <li><a href="http://www.khanacademy.org/v/french-revolution--part-1?p=History">French Revolution [part I]</a></li>
+      <li><a href="http://www.khanacademy.org/video/french-revolution--part-2?playlist=History">French Revolution [part II]</a></li>
+      <li><a href="http://www.khanacademy.org/video/french-revolution--part-3----reign-of-terror?playlist=History">French Revolution (Reign of terror)[part III]</a></li>
+      <li><a href="http://www.khanacademy.org/video/french-revolution--part-4----the-rise-of-napoleon-bonaparte?playlist=History">French Revolution (Rise of Napoleon Bonaparte) [part IV]</a></li>
+    </ul>
+  </li>
+  <li>Haitian Revolution
+    <ul> 
+      <li><a href="http://www.khanacademy.org/video/haitian-revolution--part-1?playlist=History">Haitian Revolution [part I]</a></li>
+      <li><a href="http://www.khanacademy.org/video/haitian-revolution--part-2?playlist=History">Haitian Revolution [part II]</a></li>
+      <li><a href="http://www.youtube.com/user/haitianhistory#p/u/16/gWAqaQrsa7E">Toussaint Louverture</a></li>
+    </ul>
+  </li>
+  <li>...</li>
+  <li>1957-1986 - Duvaliers era
+    <ul>
+      <li><a href="http://www.youtube.com/watch?v=VyfGJMr4bX8">Katherine Dunham at home in Martissant, Haiti (1962)</a></li>
+      <li><a href="http://www.youtube.com/watch?v=iLxwh9KtppQ">Haiti 1969 ('Papa Doc' Duvalier interview) [part I]</a></li>
+      <li><a href="http://www.youtube.com/watch?v=msi_Ox4DQsA">Haiti 1969 ('Papa Doc' Duvalier interview) [part II]</a></li>
+      <li><a href="http://www.youtube.com/user/haitianhistory#p/u/23/NdWx0K8jIOs">Haiti in the 70's (ABC's Harry Reasoner 1975) [part I]</a></li>
+      <li><a href="http://www.youtube.com/user/haitianhistory#p/u/22/otwzvzzdZKU">Haiti in the 70's (ABC's Harry Reasoner 1975) [part II]</a></li>
+      <li><a href="http://www.youtube.com/watch?v=5J5R8CRsLKE">Jean-Claude Duvalier Interview (1981) [part I]</a></li>
+      <li><a href="http://www.youtube.com/user/haitianhistory#p/u/13/XLRSFTFAXFQ">Jean-Claude Duvalier Interview (1981) [part II]</a></li>
+      <li><a href="http://www.youtube.com/watch?v=UT-vOzsDsaU">Pope John Paul II visits Haiti (1983) [part I]</a></li>
+      <li><a href="http://www.youtube.com/watch?v=FCbW5YzyS2M">Pope John Paul II visits Haiti (1983) [part II]</a></li>
+      <li><a href="http://www.youtube.com/user/haitianhistory#p/u/31/CPIwP-T-PpM">The tonton macoutes (VSN) [part I]</a></li>
+      <li><a href="http://www.youtube.com/user/haitianhistory#p/u/30/XuaYdb5fcQk">The tonton macoutes (VSN) [part II]</a></li>
+      <li><a href="http://www.youtube.com/watch?v=xK1QZB-6iQM">Jean-Claude Duvalier (the last days)</a></li>
+      <li><a href="http://www.youtube.com/user/haitianhistory#p/u/38/1p0aZN0DcZ4">The end of a Dynasty (the Duvaliers) [part I]</a></li>
+      <li><a href="http://www.youtube.com/user/haitianhistory#p/u/37/MErIucXZsnI">The end of a Dynasty (the Duvaliers) [part II]</a></li>
+      <li><a href="http://www.youtube.com/user/haitianhistory#p/u/36/yZP82smINAY">The end of a Dynasty (the Duvaliers) [part III]</a></li>
+      <li><a href="http://www.youtube.com/user/haitianhistory#p/u/35/w1oLReaqjRo">The end of a Dynasty (the Duvaliers) [part IV]</a></li>
+      <li><a href="http://www.youtube.com/user/haitianhistory#p/u/33/cGt1o1jCkDA">The end of a Dynasty (the Duvaliers) [part V]</a></li>
+      <li><a href="http://www.youtube.com/user/haitianhistory#p/u/32/t52lXZacYnY">The end of a Dynasty (the Duvaliers) [part VI]</a></li>
+      <li><a href="http://www.youtube.com/user/haitianhistory#p/u/39/xS4ydNVhbxo">Jean-Claude Duvalier interview in Paris</a></li>
+    </ul>
+  </li>
+  <li>1990-2011 - Aristide/Preval era
+    <ul>
+      <li><a href="http://www.youtube.com/user/haitianhistory#p/u/29/fxvDCkeIP30">Marc Bazin, ex-minister of finance for Haiti, on the Haitian economy, corruption and the Duvaliers.</a></li>
+      <li><a href="http://www.youtube.com/user/haitianhistory#p/u/28/pOS_FHHHGRA">Michelle Montas of radio Haiti on Charlie Rose (2003)</a></li>
+      <li><a href="http://www.youtube.com/user/haitianhistory#p/u/19/HjKSim7G-PY">Was Aristide kidnaped? (Charlie Rose March 1, 2004) [part I]</a></li>
+      <li><a href="http://www.youtube.com/user/haitianhistory#p/u/20/Y6Y75mCaJwY">Did the US break Haiti? (Charlie Rose March 1, 2004) [part II]</a></li>
+    </ul>
+  </li>
+  <li>Other
+    <ul>
+      <li><a href="http://www.pbs.org/wnet/black-in-latin-america/featured/haiti-the-dominican-republic-an-island-divided-watch-full-episode/165/">Haiti & the Dominican Republic</a></li>
+      <li><a href="http://www.youtube.com/watch?v=bRVPoxDgbBo&feature=related">Port-au-Prince in the 1940's</a></li>  
+      <li><a href="http://www.youtube.com/watch?v=5Mr1USFY3mY">Haiti 1950 (le centre d'art)</a></li>
+      <li><a href="http://www.youtube.com/user/haitianhistory#p/u/40/2gAHKus2vF0">Jacques Roumain - Passion for a country [part I]</a></li>
+      <li><a href="http://www.youtube.com/user/haitianhistory#p/u/41/uHEYuulYuMI">Jacques Roumain - Passion for a country [part II]</a></li>
+      <li><a href="http://www.youtube.com/user/haitianhistory#p/u/34/28cUSZQeGfM">Les chemins de la memoire (Haiti before Duvalier) [part I]</a></li>
+      <li><a href="http://www.youtube.com/user/haitianhistory#p/u/27/bD3g54YktrI">Les chemins de la memoire (Haiti before Duvalier) [part II]</a></li>
+      <li><a href="http://www.youtube.com/user/haitianhistory#p/u/26/OZJcGl0cvOM">Les chemins de la memoire (Haiti before Duvalier) [part III]</a></li>
+      <li><a href="http://www.youtube.com/user/haitianhistory#p/u/25/w8VDWM9X5ok">Les chemins de la memoire (Haiti before Duvalier) [part IV]</a></li>
+      <li><a href="http://www.youtube.com/user/haitianhistory#p/u/24/tH3J4QV7sl0">Les chemins de la memoire (Haiti before Duvalier) [part V]</a></li>
+      <li><a href="http://www.youtube.com/user/haitianhistory#p/u/15/2A90QCMCTdA">Haitian sports history (Who was Joe "ti Joe" Gaetjens?)</a></li>
+      <li><a href="http://www.youtube.com/user/haitianhistory#p/u/21/J3I2_yxIyz0">Arab Immigration to Haiti</a></li>
+      <li><a href="http://www.youtube.com/user/haitianhistory#p/u/18/Tqv89NuGO94">From luxurious hotel to bidonville (Le Simbi Continental d'Haiti)</a></li>
+      <li><a href="http://www.youtube.com/user/haitianhistory#p/u/17/6DGCRO6jkiU">When the earth moves (Haiti earthquake anniversary)</a></li>
+      <li><a href="http://www.youtube.com/watch?v=C_zMB1EGBXg">The Restavek Foundation (CNN)</a></li>
+    </ul>
+  </li>
+</ul><!-- Documentary -->
+
+<ul class="column" id="newspaper">
+  <li><h2><a href="http://www.onlinenewspapers.com/haiti.htm">Newspapers</a></h2></li>
+  <li><a href="http://www.haitienmarche.com/">Haiti En Marche</a></li>
+  <li><a href="http://haitiglobe.com/">Haiti Globe</a></li>
+  <li><a href="http://www.haiti-info.com/">Haiti Info</a></li>
+  <li><a href="http://www.haiti-liberte.com/">Haiti Liberte</a></li>
+  <li><a href="http://www.haiti-observateur.net/">Haiti Observateur</a></li>
+  <li><a href="http://www.haitiprogres.com/">Haiti Progres</a></li>
+  <li><a href="http://www.haitiantimes.com/">Haitian Times</a></li>
+  <li><a href="http://www.lematinhaiti.com/">Le Matin</a></li>
+  <li><a href="http://www.lenouvelliste.com/">Le Nouvelliste</a></li>
+</ul><!-- Newspaper -->
+
+<ul class="column" id="radio">
+  <li><h2><a href="http://radiostationworld.com/locations/haiti/radio_websites.asp">Radio</a></h2></li>
+  <li>Cap Haitien
+    <ul>
+	  <li>-AM RADIO-</li>
+	  <li>840<a href="http://www.radio4veh.org/">Radio 4VEH</a></li>
+	  <li>1230<a href="http://radiovoixavemaria.com/">Radio Voix Ave Maria</a></li>
+	  <li>&nbsp;</li>
+	  <li>-FM RADIO-</li>
+	  <li>92.5<a href="http://www.atlantikhaiti.com/">Radyo Atlantik</a></li>
+	  <li>92.9<a href="http://radioidealehaiti.com/">Radio Ideale</a></li>
+	  <li>93.5<a href="http://radiovascofmhaiti.com/">Antilles Internationales</a></li>
+	  <li>94.7<a href="http://www.radio4veh.org/">Radio 4VEH</a></li>
+	  <li>94.9<a href="http://www.radiokontakinterhaiti.com/">Radio Kontak Inter</a></li>
+	  <li>96.9<a href="http://www.radiomusiquefm.com/">Radio Musique</a></li>
+	  <li>97.3<a href="http://www.radionirvanafm.com/">Radio Nirvana</a></li>
+	  <li>98.1<a href="http://www.radiolumiere.org/">Radio Lumiere</a></li>
+	  <li>98.5<a href="http://www.radiovoixavemaria.com/">Radio Voix Ave Maria</a></li>
+	  <li>99.7<a href="http://www.gammafm.com/">Radio Gamma</a></li>
+	  <li>101.7<a href="http://www.radiopassionhaiti.com/">Radio Passion</a></li>
+	  <li>104.2<a href="http://www.radiotelevenushaiti.com/">Radio Venus FM</a></li>
+	  <li>104.7<a href="http://radioteleparadis.com/">Radio Tele Paradis</a></li>
+	  <li>105.7<a href="http://www.radiovision2000haiti.net/">Radio Vision 2000</a></li>
+	  <li>106.9<a href="http://www.radiosanssouci.com/">Sans Souci FM</a></li>
+    </ul>
+  </li>
+  <li>Plateau Central
+    <ul>
+      <li>-AM RADIO-</li>
+      <li>720<a href="http://www.radiolumiere.org/">Radio Lumiere</a></li>
+      <li>740<a href="http://www.radiolumiere.org/">Radio Lumiere</a></li>
+      <li>940<a href="http://radiosaintmarc.com/">Radio Saint-Marc</a></li>
+      <li>&nbsp;</li>
+      <li>-FM RADIO-</li>
+      <li>88.1<a href="http://www.papillonfmhaiti.com/">Radio Papillon</a></li>
+      <li>89.1<a href="http://www.radiomedia89.com/">Radio Media 89</a></li>
+      <li>89.7<a href="http://www.voixdeselus.org/">Radio Voix Des Elus</a></li>
+      <li>91.3<a href="http://sunfmhaiti.com/">Sun FM</a></li>
+      <li>91.7<a href="http://www.radiocentralefm.com/">Radio Centrale</a></li>
+      <li>94.1<a href="http://www.radiojupiterplushaiti.com/">Radio Jupiter Plus</a></li>
+      <li>95.3<a href="http://www.teleradioprovinciale.com/radio.htm">Radio Provinciale</a></li>
+      <li>96.5<a href="http://www.radioxplosion.com/">Xplosion FM</a></li>
+      <li>96.9<a href="http://www.kissfmhaiti.com/">Kiss FM</a></li>
+      <li>98.1<a href="http://www.radiovision2000haiti.net/">Radio Vision 2000</a></li>
+      <li>99.1<a href="http://www.escadrons.com/">RTC-Radio Tele Caleb</a></li>
+      <li>99.9<a href="http://www.radiovision2000haiti.net/">Radio Vision 2000</a></li>
+      <li>100.5<a href="http://www.radyolevekanpe.com/">Radyo LeveKanpe</a></li>
+      <li>101.3<a href="http://radiosupergemini.com/">Radio Super Gemini</a></li>
+      <li>101.9<a href="http://www.radiodeltastereo.com/">Radio Delta Stereo</a></li>
+      <li>102.9<a href="http://www.radioteteatete.com/">Radio Tete a Tete</a></li>
+    </ul>
+  </li>
+  <li>Jacmel
+    <ul>
+      <li>-FM RADIO-</li>
+      <li>88.9<a href="http://www.radiovision2000haiti.net/">Radio Tele Express</a></li>
+      <li>90.9<a href="http://www.radiovision2000haiti.net/">Radio Vision 2000</a></li>
+      <li>92.5<a href="http://www.radionegritude.com/">Radio Negritude</a></li>
+      <li>93.1<a href="http://www.ambiancefm.com/">Ambiance FM</a></li>
+      <li>103.1<a href="http://www.radiohispaniolajacmel.com/">Radio Hispaniola</a></li>
+    </ul>
+  </li>
+  <li>Les Cayes
+    <ul>
+      <li>-AM RADIO-</li>
+      <li>760<a href="http://www.radiolumiere.org/">Radio Lumiere</a></li>
+      <li>780<a href="http://www.radiolumiere.org/">Radio Lumiere</a></li>
+      <li>&nbsp;</li>
+      <li>-FM RADIO-</li>
+      <li>92.5<a href="http://www.radioshekina.com/">Radio Shekina</a></li>
+      <li>97.9<a href="http://tmsplus.com/">TMS Plus</a></li>
+      <li>98.5<a href="http://www.radiovibration.com/">Radio Vibration FM</a></li>
+      <li>100.5<a href="http://radiomegasud.com/">Megasud 100.5</a></li>
+      <li>101.7<a href="http://www.radiovision2000haiti.net/">Radio Vision 2000</a></li>
+      <li>102.5<a href="http://www.matinet.com/macaya.htm">Radio Macaya</a></li>
+      <li>104.9<a href="http://www.labrisefm.com/">La Brise FM</a></li>
+      <li>107.9<a href="http://www.radiolumiere.org/">Radio Lumiere</a></li>
+    </ul>
+  </li>
+  <li>Port-au-Prince
+    <ul>
+      <li>-AM RADIO-</li>
+      <li>590<a href="http://www.aristidefoundation.haiti.org/english/radyoeng.html">Radyo Timoun</a></li>
+      <li>660<a href="http://www.radiolumiere.org/">Radio Lumiere</a></li>
+      <li>910<a href="http://www.radiokiskeya.com/">Kiskeya</a></li>
+      <li>1050<a href="http://www.radyoginen.com/">Radyo Ginen</a></li>
+      <li>1240<a href="http://www.radioantillesinternationale.com/">RAI-Radio Antilles Internationales</a></li>
+      <li>1280<a href="http://www.metropolehaiti.com/">Metropole</a></li>
+      <li>1470<a href="http://www.primenet.com/~rafreid/radio.html">Radio Lakansyel</a></li>
+      <li>1560<a href="http://www.tagnet.org/4vve/">Voix de l'Esperance</a></li>
+      <li>&nbsp;</li>
+      <li>-FM RADIO-</li>
+      <li>88.5<a href="http://www.radiokiskeya.com/">Kiskeya</a></li>
+      <li>89.7<a href="http://www.tagnet.org/4vve/">Voix de l'Esperance</a></li>
+      <li>90.1<a href="http://www.radio1haiti.com/">Radio One</a></li>
+      <li>90.5<a href="http://www.signalfmhaiti.com/">Signal FM</a></li>
+      <li>90.9<a href="http://www.aristidefoundation.haiti.org/english/radyoeng.html">Radyo Timoun</a></li>
+      <li>91.3<a href="http://www.radiotropichaiti.com/">Tropic FM</a></li>
+      <li>92.1<a href="http://www.radiolumiere.org/">Radio Lumiere</a></li>
+      <li>92.9<a href="http://www.radyoginen.com/">Radyo Ginen</a></li>
+      <li>93.3<a href="http://www.ambiancefm.com/">Radio Ambiance</a></li>
+      <li>94.1<a href="http://www.palimpalem.com/6/radionouvellegeneration/index.html">Radio Nouvelle Generation</a></li>
+      <li>94.4<a href="http://www.caraibesfm.com/">Caraibes FM</a></li>
+      <li>94.9<a href="http://minustahfm.org/">Minustah FM</a></li>
+      <li>95.3<a href="http://www.radiotropicale.com/">Tropicale Internationale</a></li>
+      <li>95.7<a href="http://www.radiohorizon2000haiti.com/">Radio Horizon 2000</a></li>
+      <li>96.1<a href="http://www.rch2000.net/">RCH2000</a></li>
+      <li>96.5<a href="http://skyfmradio.com/">Sky FM</a></li>
+      <li>97.3<a href="http://www.megastarfmhaiti.com/">Megastar</a></li>
+      <li>97.9<a href="http://www.radiolumiere.org/">Radio Lumiere</a></li>
+      <li>98.5<a href="http://radioiboht.com/">Radio Ibo</a></li>
+      <li>99.3<a href="http://www.radiovision2000haiti.net/">Radio Vision 2000</a></li>
+      <li>99.7<a href="http://sweetfmhaiti.com/">Sweet FM</a></li>
+      <li>100.1<a href="http://www.metropolehaiti.com/">Metropole</a></li>
+      <li>100.5<a href="http://www.rfi.fr/">RFI-Haiti</a></li>
+      <li>100.9<a href="http://www.radiodeltastereo.com/">Radio Delta Stereo</a></li>
+      <li>101.7<a href="http://www.energiefm.com/">Energie FM</a></li>
+      <li>102.5<a href="http://www.radiozenithfm.com/">Zenith FM</a></li>
+      <li>102.9<a href="http://www.radiosuperstarhaiti.com/">Radio Super Star</a></li>
+      <li>103.3<a href="http://melodiefmhaiti.com/">Melodie</a></li>
+      <li>103.7<a href="http://www.primenet.com/~rafreid/radio.html">Radio Lakansyel</a></li>
+      <li>104.1<a href="http://radiosodecservice.com/">Radio Sodec Services</a></li>
+      <li>104.5<a href="http://radiogalaxiehaiti.com/">Galaxie FM</a></li>
+      <li>105.7<a href="http://www.radiosoleil.org/">Radio Soleil</a></li>
+      <li>107.5<a href="http://radiosolidaritehaiti.net/">Radio Solidarite</a></li>
+      <li>107.7<a href="http://www.scoopfmhaiti.com/">Scoop FM</a></li>
+    </ul>
+  </li>
+  <li>Port-de-Paix
+    <ul>
+      <li>-FM RADIO-</li>
+      <li>92.5<a href="http://www.radiovision2000haiti.net/">Radio Vision 2000</a></li>
+      <li>102.3<a href="http://www.radiobalade.com/">Radio Balade FM</a></li>
+    </ul>
+  </li>
+</ul><!-- Newspaper -->
+
+</td><!-- Main -->
+
+
+<td id="rightpanel">
+
+<script type="text/javascript" src="http://output14.rssinclude.com/output?type=js&amp;id=252615&amp;hash=d6cc8cc4c8a9dce127ede6b609499a37"></script>
+
+
+
+<script>
+new TWTR.Widget({
+  version: 2,
+  type: 'search',
+  search: 'haiti',
+  interval: 6000,
+  title: '',
+  subject: 'Haiti',
+  width: 250,
+  height: 400,
+  theme: {
+    shell: {
+      background: '#ddbbdd',
+      color: '#ffffff'
+    },
+    tweets: {
+      background: '#ffffff',
+      color: '#444444',
+      links: '#1985b5'
+    }
+  },
+  features: {
+    scrollbar: false,
+    loop: true,
+    live: true,
+    hashtags: true,
+    timestamp: true,
+    avatars: true,
+    toptweets: true,
+    behavior: 'default'
+  }
+}).render().start();
+</script>
+
+</td><!-- Right Panel -->
+
+</tr><tr>
+
+<td>&nbsp;</td>
+<td id="comments" colspan="10">
+
+</td><!-- Comments -->
+
+</tr></table>
+
+	</body>
+</html>
