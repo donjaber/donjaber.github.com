@@ -9,6 +9,7 @@ a:link {color:#0000ff;}
 a:visited {color:#1133ff;}
 a.box {padding:2px;}
 h1,h2,h3,h4,h5 {padding:0 0 0 0;margin:0;}
+h1 {font-size:1.2em;}
 h2 {font-size:1.1em;}
 h3 {font-size:1em;}
 .column {float:left;height:1%;position:relative;display:none;} 
