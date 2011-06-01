@@ -88,6 +88,41 @@
                     new TWTR.Widget({
                       version: 2,
                       type: 'search',
+                      search: 'corrupt',
+                      interval: 6000,
+                      title: '',
+                      subject: 'Corrupt',
+                      width: 250,
+                      height: 400,
+                      theme: {
+                        shell: {
+                          background: '#cccccc',
+                          color: '#ffffff'
+                        },
+                        tweets: {
+                          background: '#ffffff',
+                          color: '#444444',
+                          links: '#1985b5'
+                        }
+                      },
+                      features: {
+                        scrollbar: false,
+                        loop: true,
+                        live: true,
+                        hashtags: true,
+                        timestamp: true,
+                        avatars: true,
+                        toptweets: true,
+                        behavior: 'default'
+                      }
+                    }).render().start();
+                    </script>
+                </td>
+                <td>
+                    <script>
+                    new TWTR.Widget({
+                      version: 2,
+                      type: 'search',
                       search: 'android',
                       interval: 6000,
                       title: '',
@@ -127,41 +162,6 @@
                       interval: 6000,
                       title: '',
                       subject: 'Khan Academy',
-                      width: 250,
-                      height: 400,
-                      theme: {
-                        shell: {
-                          background: '#cccccc',
-                          color: '#ffffff'
-                        },
-                        tweets: {
-                          background: '#ffffff',
-                          color: '#444444',
-                          links: '#1985b5'
-                        }
-                      },
-                      features: {
-                        scrollbar: false,
-                        loop: true,
-                        live: true,
-                        hashtags: true,
-                        timestamp: true,
-                        avatars: true,
-                        toptweets: true,
-                        behavior: 'default'
-                      }
-                    }).render().start();
-                    </script>
-                </td>
-                <td>
-                    <script>
-                    new TWTR.Widget({
-                      version: 2,
-                      type: 'search',
-                      search: 'Broward College',
-                      interval: 6000,
-                      title: '',
-                      subject: 'Broward College',
                       width: 250,
                       height: 400,
                       theme: {
