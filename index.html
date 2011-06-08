@@ -8,6 +8,10 @@
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script>
         <script type="text/javascript" src="scripts.js"></script>
+        <style>
+            ul li {border: 1px dashed #dddddd;border-width: 0 0 1px 0;padding: 3px 0;}
+            ul#quotes q {font-style:italic;}
+        </style>
     </head>
     
     <body>
@@ -22,11 +26,9 @@
                     <img src="logo.png" title="e-Light" width="64" class="box" style="float:right"/>
                     <ul class="box">
                         <li><h2>Timeless</h2></li>
-                        <li><a href="http://scienceblogs.com/startswithabang/2011/04/the_history_of_pretty_much_eve.php">History of Everything</a></li>
-                        <li><a href="http://en.wikipedia.org/wiki/History_of_science">History of Science</a></li>
-                        <li><a href="http://en.wikipedia.org/wiki/Timeline_of_scientific_discoveries">Scientific Discoveries</a></li>
-                        <li><a href="#scientists" toggle="scientists">Great Scientists</a></li>
+                        <li><a href="http://www.youtube.com/watch?v=yqc9zX04DXs">Big History</a></li>
                         <li><a href="#quotes" toggle="quotes">Quotes</a></li>
+                        <li><a href="#miscellaneous" toggle="miscellaneous">Miscellaneous</a></li>
                         <li>&nbsp;</li>
                         <li><h2>Latest</h2></li>
                         <li><a href="#quality" toggle="quality">Quality Sites</a></li>
@@ -37,7 +39,8 @@
                         <li><a href="#documentary" toggle="documentary">Documentaries</a></li>
                         <li>&nbsp;</li>
                         <li><h2>About Me</h2></li>
-                        <li><a href="#tools" toggle="tools">Favorite Tools</a></li>
+                        <li><a href="#calendar" toggle="calendar">Personal Calendar</a></li>
+                        <li><a href="#tools" toggle="tools">Online Tools</a></li>
                         <li><a href="http://www.rebuildhaitiproject.info">Rebuild Haiti Project</a></li>
                     </ul>
                 </td>
@@ -68,8 +71,9 @@
                         <li><a href="http://en.wikipedia.org/wiki/James_Clerk_Maxwell">James Clerk Maxwell</a></li>
                     </ul><!-- Scientists -->
                     
-                    <style>ul#quotes li {border: 1px dashed #cccccc;border-width: 0 0 1px 0;padding-bottom: 5px;}ul#quotes q {font-style:italic;}</style>
                     <ul id="quotes" class="column">
+                        <li><h2>Favorite Quotes</h2></li>
+                        <li>&nbsp;</li>
                         <li><q>Align with the favorable > avoid the unfavorable > accept the unavoidable > change the unacceptable > accept the unchangeable</q> - Erik Toussaint</li>
                         <li><q>Wisdom (Map) > Mission (Compass) > Goals (Cities) > Strategies (Paths) > Tactics (Modes of Transportation) > Tasks (Move)</q> - Erik Toussaint</li>
                         <li><q>Our scientific power has outrun our spiritual power. We have guided missiles and misguided men</q> - Martin Luther King Jr.</li>
@@ -83,6 +87,8 @@
                     </ul><!-- Quotes -->
                     
                     <ul id="quality" class="column">
+                        <li><h2>Quality Sites</h2></li>
+                        <li>&nbsp;</li>
                         <li><a href="http://www.ted.com">TED Talks</a></li>
                         <li><a href="http://fora.tv/">FORA.tv</a></li>
                         <li><a href="http://bigthink.com/">Big Think</a></li>
@@ -97,26 +103,36 @@
                     </ul><!-- Quality Sites -->
                     
                     <ul id="important" class="column">
+                        <li><h2>Important Sites</h2></li>
+                        <li>&nbsp;</li>
                         <li><a href="http://www.khanacademy.org/#browse">Khan Academy</a></li>
+                        <li><a href="http://www.bighistoryproject.com/">Big History Project</a></li>
                         <li><a href="http://public.resource.org/">Public.Resource.Org</a></li>
                     </ul><!-- Important Sites -->
                     
                     <ul id="socialnews" class="column">
-                        <li><a href="http://www.reddit.com/top/">Reddit</a></li>
-                        <li><a href="http://www.reddit.com/r/politics/top/">&nbsp;&nbsp;/politics</a></li>
-                        <li><a href="http://www.reddit.com/r/funny/top/">&nbsp;&nbsp;/funny</a></li>
-                        <li><a href="http://www.reddit.com/r/videos/top/">&nbsp;&nbsp;/videos</a></li>
-                        <li><a href="http://www.reddit.com/r/todayilearned/top/">&nbsp;&nbsp;/todayilearned</a></li>
-                        <li><a href="http://www.reddit.com/r/science/top/">&nbsp;&nbsp;/science</a></li>
-                        <li><a href="http://www.reddit.com/r/technology/top/">&nbsp;&nbsp;/technology</a></li>
-                        <li><a href="http://www.reddit.com/r/pics/top/">&nbsp;&nbsp;/pics</a></li>
-                        <li><a href="http://www.reddit.com/r/gif/top/">&nbsp;&nbsp;/gif</a></li>
-                        <li><a href="http://www.reddit.com/r/haiti/top/">&nbsp;&nbsp;/haiti</a></li>
-                        <li><a href="http://www.reddit.com/r/programming/top/">&nbsp;&nbsp;/programming</a></li>
+                        <li><h2>Social News Sites</h2></li>
+                        <li>&nbsp;</li>
+                        <li><a href="http://www.reddit.com/top/">Reddit</a>
+                            <ul>
+                                <li><a href="http://www.reddit.com/r/politics/hot/">&nbsp;&nbsp;/politics</a></li>
+                                <li><a href="http://www.reddit.com/r/funny/hot/">&nbsp;&nbsp;/funny</a></li>
+                                <li><a href="http://www.reddit.com/r/videos/hot/">&nbsp;&nbsp;/videos</a></li>
+                                <li><a href="http://www.reddit.com/r/todayilearned/hot/">&nbsp;&nbsp;/todayilearned</a></li>
+                                <li><a href="http://www.reddit.com/r/science/hot/">&nbsp;&nbsp;/science</a></li>
+                                <li><a href="http://www.reddit.com/r/technology/hot/">&nbsp;&nbsp;/technology</a></li>
+                                <li><a href="http://www.reddit.com/r/pics/hot/">&nbsp;&nbsp;/pics</a></li>
+                                <li><a href="http://www.reddit.com/r/gif/hot/">&nbsp;&nbsp;/gif</a></li>
+                                <li><a href="http://www.reddit.com/r/haiti/hot/">&nbsp;&nbsp;/haiti</a></li>
+                                <li><a href="http://www.reddit.com/r/programming/hot/">&nbsp;&nbsp;/programming</a></li>
+                            </ul>
+                        </li>
                         <li><a href="http://news.ycombinator.com">Hacker News</a></li>
                     </ul><!-- Important Sites -->
                     
                     <ul id="tools" class="column">
+                        <li><h2>Online Tools</h2></li>
+                        <li>&nbsp;</li>
                         <li><h2>Software</h2></li>
                         <li><a href="http://www.ubuntu.com/">Ubuntu</a> - Linux Operating System</li>
                         <li><a href="http://www.google.com/chrome">Chrome</a> - Web Browser</li>
@@ -141,6 +157,8 @@
                     </ul><!-- Tools -->
                     <ul id="documentary" class="column">
                         <li><h2><a href="http://topdocumentaryfilms.com/watch-online/">Documentaries</a></h2></li>
+                        <li>&nbsp;</li>
+                        <li><a href="http://www.youtube.com/watch?v=yqc9zX04DXs">Big History</a></li>
                         <li>Science
                             <ul>
                                 <li>The Story of Science: Power, Proof, Passion - Michael Mosley
@@ -205,13 +223,6 @@
                                                 <li><a href="http://www.youtube.com/watch?v=dnO47VZWLLE">Part 6/6</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href=""></a></li>
-                                        <li><a href=""></a></li>
-                                        <li><a href=""></a></li>
-                                        <li><a href=""></a></li>
-                                        <li><a href=""></a></li>
-                                        <li><a href=""></a></li>
-                                        <li><a href=""></a></li>
                                     </ul>
                                 </li>   
                             </ul>
@@ -408,6 +419,22 @@
                             </ul>
                         </li>
                     </ul><!-- Documentary -->
+                    
+                    <ul id="miscellaneous" class="column">
+                        <li><h2>Miscellaneous</h2></li>
+                        <li>&nbsp;</li>
+                        <li><a href="#scientists" toggle="scientists">Great Scientists</a></li>
+                        <li><a href="http://scienceblogs.com/startswithabang/2011/04/the_history_of_pretty_much_eve.php">History of Everything</a></li>
+                        <li><a href="http://en.wikipedia.org/wiki/History_of_science">History of Science</a></li>
+                        <li><a href="http://en.wikipedia.org/wiki/Timeline_of_scientific_discoveries">Scientific Discoveries</a></li>
+                    </ul><!-- Miscellaneous -->
+                    
+                    
+                    <ul id="calendar" class="column">
+                        <li>
+                            <iframe src="https://www.google.com/calendar/b/0/embed?mode=WEEK&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=entouss%40gmail.com&amp;color=%232952A3&amp;ctz=America%2FNew_York" style=" border-width:0 " width="800" height="600" frameborder="0" scrolling="no"></iframe>
+                        </li>
+                    </ul><!-- Calendar -->
                     
                     <ul id="resume" class="column">
                         <li><h2>Resume</h2></li>
