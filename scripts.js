@@ -13,11 +13,29 @@ $(function() {
 
 	$('body').append($('<span id="sorted"></span>'));
 	$('a[toggle]').each(function(){
-		$(this).click(function(){$('.column').hide();$('#'+$(this).attr('toggle')).toggle();});
+		$(this).click(function(){
+            $('.column').hide();
+            var toggleId = $(this).attr('toggle');
+            var toggleHref= $(this).attr('href');
+            
+            $('#'+toggleId).toggle(); 
+            if (toggleHref && toggleHref != "#"+toggleId){
+                $('#'+toggleId).load(toggleHref.replace("#","")); 
+                try {
+                    var hashValue = location.href.split('#')[1];
+                    if ('#'+hashValue === toggleHref) {
+                        return false;   
+                    }
+                }catch(err){}
+            }
+        });
 		$('#sorted').append($('#'+$(this).attr('toggle')).hide());
 	});
 	$('#main').append($('#sorted'));
-	try {$('#'+location.href.split('#')[1]).show();}catch(err){}
+	try {
+        var hashValue = location.href.split('#')[1];
+        $('a[href=#'+hashValue+']').click();
+    }catch(err){}
 	
 	var searchText = 'Search and press Enter';
 	$('form#search input#query').addClass('fade').val(searchText).focus(function(){

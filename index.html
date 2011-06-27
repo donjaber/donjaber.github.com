@@ -5,8 +5,13 @@
         
         <link rel="stylesheet" type="text/css" href="style.css" />
         
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+        <script type="text/javascript">
+          google.load("jquery", "1.4.2");
+          google.load("jqueryui", "1.7.2");
+        </script>
+        
+        <script src="http://widgets.twimg.com/j/2/widget.js"></script>
         <script type="text/javascript" src="scripts.js"></script>
         <style>
             ul li {border: 1px dashed #dddddd;border-width: 0 0 1px 0;padding: 3px 0;}
@@ -39,6 +44,8 @@
                         <li><a href="#documentary" toggle="documentary">Documentaries</a></li>
                         <li>&nbsp;</li>
                         <li><h2>About Me</h2></li>
+                        <li><a href="#notes" toggle="notes">My Notes</a></li>
+                        <li><a href="#bookmarks" toggle="bookmarks">My Bookmarks</a></li>
                         <li><a href="#calendar" toggle="calendar">Personal Calendar</a></li>
                         <li><a href="#onlinetools" toggle="onlinetools">Online Tools</a></li>
                         <li><a href="#offlinetools" toggle="offlinetools">Offline Tools</a></li>
@@ -46,31 +53,21 @@
                     </ul>
                 </td>
                 <td id="main">
-                    <ul id="scientists" class="column">
-                        <li><a href="http://en.wikipedia.org/wiki/Isaac_Newton">Sir Issac Newton</a></li>
-                        <li><a href="http://en.wikipedia.org/wiki/Louis_Pasteur">Louis Pasteur</a></li>
-                        <li><a href="http://en.wikipedia.org/wiki/Albert_Einstein">Albert Einstein</a></li>
-                        <li><a href="http://en.wikipedia.org/wiki/Galileo_Galilei">Galileo</a></li>
-                        <li><a href="http://en.wikipedia.org/wiki/Nikola_Tesla">Nikola Tesla</a></li>
-                        <li><a href="http://en.wikipedia.org/wiki/Marie_curie">Marie Curie</a></li>
-                        <li><a href="http://en.wikipedia.org/wiki/Aristotle">Aristotle</a></li>
-                        <li><a href="http://en.wikipedia.org/wiki/Charles_darwin">Charles Darwin</a></li>
-                        <li><a href="http://en.wikipedia.org/wiki/Hermann_Emil_Fischer">Emil Fisher</a></li>
-                        <li><a href="http://en.wikipedia.org/wiki/Paul_dirac">Paul Dirac</a></li>
-                        <li><a href="http://en.wikipedia.org/wiki/Francis_bacon">Francis Bacon</a></li>
-                        <li><a href="http://en.wikipedia.org/wiki/Stephen_hawking">Stephen Hawking</a></li>
-                        <li><a href="http://en.wikipedia.org/wiki/Leonardo_da_Vinci">Leonardo Da Vinci</a></li>
-                        <li><a href="http://en.wikipedia.org/wiki/James_D._Watson">James Watson</a></li>
-                        <li><a href="http://en.wikipedia.org/wiki/Michael_Faraday">Michael Faraday</a></li>
-                        <li><a href="http://en.wikipedia.org/wiki/Otto_Hahn">Otto Hahn</a></li>
-                        <li><a href="http://en.wikipedia.org/wiki/Copernicus">Copernicus</a></li>
-                        <li><a href="http://en.wikipedia.org/wiki/Gregor_mendel">Gregor Mendel</a></li>
-                        <li><a href="http://en.wikipedia.org/wiki/Mendeleev">Mendeleev</a></li>
-                        <li><a href="http://en.wikipedia.org/wiki/Jagadish_Chandra_Bose">Sir Jagadish Chandra Bose</a></li>
-                        <li><a href="http://en.wikipedia.org/wiki/Alexander_Fleming">Alexander Fleming</a></li>
-                        <li><a href="http://en.wikipedia.org/wiki/Johannes_kepler">Johannes Kepler</a></li>
-                        <li><a href="http://en.wikipedia.org/wiki/James_Clerk_Maxwell">James Clerk Maxwell</a></li>
-                    </ul><!-- Scientists -->
+                
+                    <div id="include" class="column"></div>
+                    <ul id="bookmarks" class="column">
+                        <li><h2>My Bookmarks</h2></li>
+                        <li>&nbsp;</li>
+                        <li><a href="http://code.google.com/edu/courses.html">Google Code University</a></li>
+                        <li><a href="http://code.google.com/apis/ajax/playground/">Google Code Playground</a></li>
+                        <li><a href="http://www.nodebeginner.org/">Node.js beginner tutorial</a></li>
+                    </ul>
+                    
+                    <ul id="notes" class="column">
+                        <li><h2>My Notes</h2></li>
+                        <li>&nbsp;</li>
+                        <li><a href="#notes/template.html" toggle="include">Note Template</a></li>
+                    </ul>
                     
                     <ul id="quotes" class="column">
                         <li><h2>Favorite Quotes</h2></li>
@@ -85,6 +82,7 @@
                         <li><q>Faith is taking the first step, even when you don't see the whole staircase</q> - Martin Luther King Jr.</li>
                         <li><q>Great minds discuss ideas. Average minds discuss events. Small minds discuss people</q> - Eleanor Roosevelt</li>
                         <li><q>If it is peace you want, seek to change yourself, not other people. It is easier to protect your feet with slippers than to carpet the whole of the earth</q> - Anthony De Mello</li>
+                        <li><q>Luck is where preparation meets opportunity</q> - Seneca </li>
                     </ul><!-- Quotes -->
                     
                     <ul id="quality" class="column">
@@ -100,7 +98,6 @@
                         <li><a href="http://videolectures.net/">Video Lectures</a></li>
                         <li><a href="http://www.dolectures.com/">Do Lectures</a></li>
                         <li><a href="https://www.youtube.com/atgoogletalks">At Google Talks</a></li>
-                        <li><a href="http://code.google.com/edu/courses.html">Google Code University</a></li>
                     </ul><!-- Quality Sites -->
                     
                     <ul id="important" class="column">
@@ -155,6 +152,7 @@
                         <li><a href="https://www.mint.com/">Mint.com</a> - Online Personal Finance Software</li>
                         <li><a href="http://www.pandora.com/">Pandora</a> - Internet Radio</li>
                         <li><a href="http://grooveshark.com/">Grooveshark</a> - Online Music Service</li>
+                        <li><a href="http://netflix.com/">Netflix</a> - Online Movie Service</li>
                     </ul><!-- Online Tools -->
                     
                     <ul id="offlinetools" class="column">
@@ -436,7 +434,33 @@
                     <ul id="miscellaneous" class="column">
                         <li><h2>Miscellaneous</h2></li>
                         <li>&nbsp;</li>
-                        <li><a href="#scientists" toggle="scientists">Great Scientists</a></li>
+                        <li><a href="#scientists" toggle="scientists">Great Scientists</a>
+                            <ul>
+                                <li><a href="http://en.wikipedia.org/wiki/Isaac_Newton">Sir Issac Newton</a></li>
+                                <li><a href="http://en.wikipedia.org/wiki/Louis_Pasteur">Louis Pasteur</a></li>
+                                <li><a href="http://en.wikipedia.org/wiki/Albert_Einstein">Albert Einstein</a></li>
+                                <li><a href="http://en.wikipedia.org/wiki/Galileo_Galilei">Galileo</a></li>
+                                <li><a href="http://en.wikipedia.org/wiki/Nikola_Tesla">Nikola Tesla</a></li>
+                                <li><a href="http://en.wikipedia.org/wiki/Marie_curie">Marie Curie</a></li>
+                                <li><a href="http://en.wikipedia.org/wiki/Aristotle">Aristotle</a></li>
+                                <li><a href="http://en.wikipedia.org/wiki/Charles_darwin">Charles Darwin</a></li>
+                                <li><a href="http://en.wikipedia.org/wiki/Hermann_Emil_Fischer">Emil Fisher</a></li>
+                                <li><a href="http://en.wikipedia.org/wiki/Paul_dirac">Paul Dirac</a></li>
+                                <li><a href="http://en.wikipedia.org/wiki/Francis_bacon">Francis Bacon</a></li>
+                                <li><a href="http://en.wikipedia.org/wiki/Stephen_hawking">Stephen Hawking</a></li>
+                                <li><a href="http://en.wikipedia.org/wiki/Leonardo_da_Vinci">Leonardo Da Vinci</a></li>
+                                <li><a href="http://en.wikipedia.org/wiki/James_D._Watson">James Watson</a></li>
+                                <li><a href="http://en.wikipedia.org/wiki/Michael_Faraday">Michael Faraday</a></li>
+                                <li><a href="http://en.wikipedia.org/wiki/Otto_Hahn">Otto Hahn</a></li>
+                                <li><a href="http://en.wikipedia.org/wiki/Copernicus">Copernicus</a></li>
+                                <li><a href="http://en.wikipedia.org/wiki/Gregor_mendel">Gregor Mendel</a></li>
+                                <li><a href="http://en.wikipedia.org/wiki/Mendeleev">Mendeleev</a></li>
+                                <li><a href="http://en.wikipedia.org/wiki/Jagadish_Chandra_Bose">Sir Jagadish Chandra Bose</a></li>
+                                <li><a href="http://en.wikipedia.org/wiki/Alexander_Fleming">Alexander Fleming</a></li>
+                                <li><a href="http://en.wikipedia.org/wiki/Johannes_kepler">Johannes Kepler</a></li>
+                                <li><a href="http://en.wikipedia.org/wiki/James_Clerk_Maxwell">James Clerk Maxwell</a></li>
+                            </ul>
+                        </li>
                         <li><a href="http://scienceblogs.com/startswithabang/2011/04/the_history_of_pretty_much_eve.php">History of Everything</a></li>
                         <li><a href="http://en.wikipedia.org/wiki/History_of_science">History of Science</a></li>
                         <li><a href="http://en.wikipedia.org/wiki/Timeline_of_scientific_discoveries">Scientific Discoveries</a></li>
@@ -452,120 +476,163 @@
                     <ul id="resume" class="column">
                         <li><h2>Resume</h2></li>
                         <li>&nbsp;</li>
-                        <li><h3>-- Highschool --</h3> 2001 French Baccalaureate | Economy & Society | "Mention Bien"</li>
-                        <li><a href="portfolio/et%20hs%20diploma.jpg">Highschool Diploma</a> 08.2001</li>
-                        <li>&nbsp;</li>
-                        <li><h3>-- College --</h3> 2005 Stony Brook University | Information Systems Major, Business Administration Minor | 3.55 GPA - Cum Laude</li>
-                        <li><a href="portfolio/et%20sa%20001.jpg">Student Ambassador</a> 05.2004</li>
-                        <li><a href="portfolio/et%20sa%20000.jpg">Student Ambassador</a> 05.2005</li>
-                        <li><a href="portfolio/et%20ct.pdf">Transcript</a></li>
-                        <li><a href="portfolio/et%20cd.jpg">College diploma</a> 05.2005</li>
-                        <li>&nbsp;</li>
-                        <li><h3>-- Society Memberships --</h3></li>
-                        <li><a href="portfolio/et%20nscs%20003.jpg">National Society of Collegiate Scholars</a> 04.2002</li>
-                        <li><a href="portfolio/et%20gk%20001.jpg">Golden Key</a> 2003</li>
-                        <li><a href="portfolio/et%20upe%20000.jpg">Upsilon Pi Epsilon</a> 05.2005</li>
-                        <li>&nbsp;</li>
-                        <li><h3>-- Professional --</h3></li>
-                        <li><a href="portfolio/et%20pro%20college%20ref.jpg">Reference letter</a> 02.2003</li>
-                        <li><a href="portfolio/et%20pro%20capp.jpg">Internship</a> 06.2004 - 06.2005</li>
-                        <li><a href="portfolio/et%20pro%20capp%20evaluation.jpg">Internship evaluation</a> 06.2005</li>
-                        <li><a href="portfolio/et%20pro%20scjp%20cert.jpg">Java 5 certification</a> 08.2008</li>
-                        <li>&nbsp;</li>
-                        <li><h3>-- Skills --</h3></li>
-                        <li>&nbsp;</li>
-                        
-                        <li>-- Programming Languages --</li>
-                        <li><strong>XHTML</strong></li>
-                        <li><strong>CSS</strong></li>
-                        <li><strong>Javascript</strong></li>
-                        <li><strong>Java</strong></li>
-                        <li><strong>JSP</strong></li>
-                        <li><strong>XML</strong></li>
-                        <li><strong>SQL</strong></li>
-                        <li>XSLT</li>
-                        <li>JSTL</li>
-                        <li>C#</li>
-                        <li>ASP.NET</li>
-                        <li>&nbsp;</li>
-                        
-                        <li>-- Frameworks / Libraries--</li>
-                        <li><strong>Jquery library</strong></li>
-                        <li><strong>Ajax</strong></li>
-                        <li><strong>MVC</strong></li>
-                        <li>Hibernate framework</li>
-                        <li>Webwork framework</li>
-                        <li>&nbsp;</li>
-                        
-                        <li>-- Operating Systems --</li>
-                        <li><strong>Debian Linux</strong></li>
-                        <li><strong>Ubuntu Linux</strong></li>
-                        <li><strong>Windows XP</strong></li>
-                        <li>Windows 7</li>
-                        <li>Suse Linux</li>
-                        <li>Mac</li>
-                        <li>&nbsp;</li>
-                        
-                        <li>-- IDE --</li>
-                        <li><strong>Notepad</strong></li>
-                        <li><strong>Vi</strong></li>
-                        <li><strong>Eclipse IDE</strong></li>
-                        <li><strong>Cloud 9 IDE</strong></li>
-                        <li>Visual Studios IDE</li>
-                        <li>&nbsp;</li>
-                        
-                        <li>-- Version Control --</li>
-                        <li><strong>SVN</strong></li>
-                        <li>Git</li>
-                        <li>CVS</li>
-                        <li>&nbsp;</li>
-                        
-                        <li>-- Database --</li>
-                        <li><strong>Oracle</strong></li>
-                        <li>MS SQL Server</li>
-                        <li>MySQL</li>
-                        <li>&nbsp;</li>
-                        
-                        <li>-- Web Services</li>
-                        <li>Metro WSDL</li>
-                        <li>EntireX WEB</li>
-                        <li>EntireX RPC</li>
-                        <li>EntireX Jaxb</li>
-                        <li>EntireX Java wrapper</li>
-                        <li>&nbsp;</li>
-                        
-                        <li>-- Software --</li>
-                        <li><strong>FTP</strong></li>
-                        <li><strong>SSH</strong></li>
-                        <li><strong>MS Excel</strong></li>
-                        <li><strong>MS Word</strong></li>
-                        <li>MS Project</li>
-                        <li>MS Powerpoint</li>
-                        <li>MS Visio</li>
-                        <li>Adobe Photoshop</li>
-                        <li>Adobe Flash</li>
-                        <li>Adobe Dreamweaver</li>
-                        <li>&nbsp;</li>
-                        
-                        <li>-- Languages --</li>
-                        <li><strong>English</strong></li>
-                        <li><strong>French</strong></li>
-                        <li><strong>Creole</strong></li>
-                        <li>Spanish</li>
-                        
-                        
-                        
-                        
-                        
-                        
-                       
-                        
-                        
-                        
-                        
-                    </ul><!-- Portfolio -->
+                        <li>Highschool
+                            <ul>
+                                <li>2001 French Baccalaureate | Economics & Sociology  | "Mention Bien"</li>
+                                <li><a href="portfolio/et%20hs%20diploma.jpg">Highschool Diploma</a> 08.2001</li>
+                            </ul>
+                        </li>
+                        <li>College
+                            <ul>
+                                <li>2005 Stony Brook University | Information Systems Major, Business Administration Minor | 3.55 GPA - Cum Laude</li>
+                                <li><a href="portfolio/et%20sa%20001.jpg">Student Ambassador</a> 05.2004</li>
+                                <li><a href="portfolio/et%20sa%20000.jpg">Student Ambassador</a> 05.2005</li>
+                                <li><a href="portfolio/et%20ct.pdf">Transcript</a></li>
+                                <li><a href="portfolio/et%20cd.jpg">College diploma</a> 05.2005</li>
+                            </ul>
+                        </li>
+                        <li>Society Memberships
+                            <ul>
+                                <li><a href="portfolio/et%20nscs%20003.jpg">National Society of Collegiate Scholars</a> 04.2002</li>
+                                <li><a href="portfolio/et%20gk%20001.jpg">Golden Key</a> 2003</li>
+                                <li><a href="portfolio/et%20upe%20000.jpg">Upsilon Pi Epsilon</a> 05.2005</li>
+                            </ul>
+                        </li>
+                        <li>Professional Career
+                            <ul>
+                                <li><a href="portfolio/et%20pro%20college%20ref.jpg">Reference letter</a> 02.2003</li>
+                                <li><a href="portfolio/et%20pro%20capp.jpg">Internship</a> 06.2004 - 06.2005</li>
+                                <li><a href="portfolio/et%20pro%20capp%20evaluation.jpg">Internship evaluation</a> 06.2005</li>
+                                <li><a href="portfolio/et%20pro%20scjp%20cert.jpg">Java 5 certification</a> 08.2008</li>
+                            </ul>
+                        </li>
+                        <li>Skills
+                            <ul>
+                                <li>Programming Languages
+                                    <ul>
+                                        <li><strong>XHTML</strong></li>
+                                        <li><strong>CSS</strong></li>
+                                        <li><strong>Javascript</strong></li>
+                                        <li><strong>Java</strong></li>
+                                        <li><strong>JSP</strong></li>
+                                        <li><strong>XML</strong></li>
+                                        <li><strong>SQL</strong></li>
+                                        <li>XSLT</li>
+                                        <li>JSTL</li>
+                                        <li>C#</li>
+                                        <li>ASP.NET</li>
+                                    </ul>
+                                </li>
+                                <li>Frameworks / Libraries
+                                    <ul>
+                                        <li><strong>Jquery library</strong></li>
+                                        <li><strong>Ajax</strong></li>
+                                        <li><strong>MVC</strong></li>
+                                        <li>Hibernate framework</li>
+                                        <li>Webwork framework</li>
+                                    </ul>
+                                </li>
+                                <li>Operating Systems
+                                    <ul>
+                                        <li><strong>Debian Linux</strong></li>
+                                        <li><strong>Ubuntu Linux</strong></li>
+                                        <li><strong>Windows XP</strong></li>
+                                        <li>Windows 7</li>
+                                        <li>Suse Linux</li>
+                                        <li>Mac</li>
+                                    </ul>
+                                </li>
+                                <li>IDE
+                                    <ul>
+                                        <li><strong>Notepad</strong></li>
+                                        <li><strong>Vi</strong></li>
+                                        <li><strong>Eclipse IDE</strong></li>
+                                        <li><strong>Cloud 9 IDE</strong></li>
+                                        <li>Visual Studios IDE</li>
+                                    </ul>
+                                </li>
+                                <li>Version Control
+                                    <ul>
+                                        <li><strong>SVN</strong></li>
+                                        <li>Git</li>
+                                        <li>CVS</li>
+                                    </ul>
+                                </li>
+                                <li>Database
+                                    <ul>
+                                        <li><strong>Oracle</strong></li>
+                                        <li>MS SQL Server</li>
+                                        <li>MySQL</li>
+                                    </ul>
+                                </li>
+                                <li>Web Services
+                                    <ul>
+                                        <li>Metro WSDL</li>
+                                        <li>EntireX WEB</li>
+                                        <li>EntireX RPC</li>
+                                        <li>EntireX Jaxb</li>
+                                        <li>EntireX Java wrapper</li>
+                                    </ul>
+                                </li>
+                                <li>Software
+                                    <ul>
+                                        <li><strong>FTP</strong></li>
+                                        <li><strong>SSH</strong></li>
+                                        <li><strong>MS Excel</strong></li>
+                                        <li><strong>MS Word</strong></li>
+                                        <li>MS Project</li>
+                                        <li>MS Powerpoint</li>
+                                        <li>MS Visio</li>
+                                        <li>Adobe Photoshop</li>
+                                        <li>Adobe Flash</li>
+                                        <li>Adobe Dreamweaver</li>
+                                    </ul>
+                                </li>
+                                <li>Languages
+                                    <ul>
+                                        <li><strong>English</strong></li>
+                                        <li><strong>French</strong></li>
+                                        <li><strong>Creole</strong></li>
+                                        <li>Spanish</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul><!-- Resume -->
                 </td><!-- main -->
-                <td id="right"></td>
+                <td id="right">
+<script>
+
+new TWTR.Widget({
+  version: 2,
+  type: 'profile',
+  rpp: 5,
+  interval: 6000,
+  width: 250,
+  height: 500,
+  theme: {
+    shell: {
+      background: '#cccccc',
+      color: '#ffffff'
+    },
+    tweets: {
+      background: '#ffffff',
+      color: '#444444',
+      links: '#1985b5'
+    }
+  },
+  features: {
+    scrollbar: false,
+    loop: false,
+    live: false,
+    hashtags: true,
+    timestamp: true,
+    avatars: false,
+    behavior: 'all'
+  }
+}).render().setUser('etoussai').start();
+</script>
+                </td> <!-- Right Panel -->
             </tr>
             <tr id="footer">
                 <td colspan="3"></td>
