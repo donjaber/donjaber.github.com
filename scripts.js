@@ -34,7 +34,11 @@ $(function() {
 	$('#main').append($('#sorted'));
 	try {
         var hashValue = location.href.split('#')[1];
-        $('a[href=#'+hashValue+']').click();
+        if ($('a[href=#'+hashValue+']').size() > 0) {
+            $('a[href=#'+hashValue+']').click();
+        } else {
+            $('#'+hashValue).show(); 
+        }
     }catch(err){}
 	
 	var searchText = 'Search and press Enter';
